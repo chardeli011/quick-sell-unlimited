@@ -34,10 +34,13 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const isServer = typeof window === "undefined";
+
+
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!ref.current) return;
+    if (isServer || !ref.current) return;
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
@@ -88,6 +91,7 @@ function Nav() {
 function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (isServer) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from("[data-hero-chip]", { y: 20, opacity: 0, duration: 0.6 })
@@ -304,6 +308,7 @@ function HowItWorks() {
   ];
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (isServer) return;
     const ctx = gsap.context(() => {
       gsap.from("[data-step]", {
         x: -60,

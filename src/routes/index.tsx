@@ -37,6 +37,7 @@ if (typeof window !== "undefined") {
 const isServer = typeof window === "undefined";
 
 
+
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {

@@ -30,11 +30,11 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-if (typeof window !== "undefined") {
+const isServer = typeof window === "undefined";
+
+if (!isServer) {
   gsap.registerPlugin(ScrollTrigger);
 }
-
-const isServer = typeof window === "undefined";
 
 
 

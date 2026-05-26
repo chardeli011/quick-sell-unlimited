@@ -30,7 +30,9 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);

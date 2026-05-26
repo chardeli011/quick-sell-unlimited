@@ -100,10 +100,20 @@ function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-white/5 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <img src="https://lovable.dev/placeholder.svg" alt="Quik Logo" className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-            (e.target as HTMLImageElement).parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight">quik<span class="text-yellow">.</span></span>');
-          }} />
+          <img 
+            src="/logo.png" 
+            alt="Quik Logo" 
+            className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" 
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src.includes('logo.png')) {
+                target.src = "/logo.svg";
+                return;
+              }
+              target.style.display = 'none';
+              target.parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight text-white">quik<span class="text-yellow">.</span></span>');
+            }} 
+          />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
           <a href="#por-que" className="hover:text-yellow hover:-translate-y-1 transition-all">Plataforma</a>

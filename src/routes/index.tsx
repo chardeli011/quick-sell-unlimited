@@ -446,7 +446,7 @@ function HowItWorks() {
           </div>
         ))}
         
-        <div className="cta-trigger w-[60vw] shrink-0 flex flex-col items-center justify-center relative px-20">
+        <div className="cta-trigger w-[60vw] shrink-0 flex flex-col items-center justify-center relative px-20 perspective-1000">
           <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0">
             <div className="w-[80%] h-[60%] rounded-2xl overflow-hidden shadow-2xl rotate-3">
               <img 

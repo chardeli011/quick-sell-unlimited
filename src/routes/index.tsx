@@ -43,23 +43,49 @@ function useReveal() {
   useEffect(() => {
     if (isServer || !ref.current) return;
     const ctx = gsap.context(() => {
+      // General Reveal
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
           y: 40,
           opacity: 0,
           duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+          ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
         });
       });
+
+      // Stagger
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((el, i) => {
         gsap.from(el, {
           y: 30,
           opacity: 0,
-          duration: 0.7,
-          delay: i * 0.06,
-          ease: "power2.out",
+          duration: 0.8,
+          delay: i * 0.08,
+          ease: "power3.out",
           scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
+
+      // Interactive Hover Effects (everything with data-interactive)
+      gsap.utils.toArray<HTMLElement>("[data-interactive]").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          gsap.to(el, { scale: 1.05, duration: 0.4, ease: "power2.out" });
+        });
+        el.addEventListener("mouseleave", () => {
+          gsap.to(el, { scale: 1, duration: 0.4, ease: "power2.out" });
+        });
+      });
+
+      // Magnetic Buttons
+      gsap.utils.toArray<HTMLElement>(".btn-yellow, .btn-ghost").forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
         });
       });
     }, ref);
@@ -68,18 +94,19 @@ function useReveal() {
   return ref;
 }
 
+
 function Nav() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-white/5 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-2xl font-bold tracking-tight">
+        <a href="#" className="font-display text-2xl font-bold tracking-tight hover:scale-110 transition-transform">
           quik<span className="text-yellow">.</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
-          <a href="#por-que" className="hover:text-yellow transition">Plataforma</a>
-          <a href="#como" className="hover:text-yellow transition">Como funciona</a>
-          <a href="#precos" className="hover:text-yellow transition">Preços</a>
-          <a href="#faq" className="hover:text-yellow transition">FAQ</a>
+          <a href="#por-que" className="hover:text-yellow hover:-translate-y-1 transition-all">Plataforma</a>
+          <a href="#como" className="hover:text-yellow hover:-translate-y-1 transition-all">Como funciona</a>
+          <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Preços</a>
+          <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
         <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5">
           Criar conta <ArrowRight className="w-4 h-4" />
@@ -113,7 +140,7 @@ function Hero() {
   return (
     <section ref={heroRef} className="relative pt-32 pb-24 overflow-hidden">
       <div data-hero-bg className="absolute inset-0 grid-bg opacity-60" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-yellow/10 blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-yellow/10 blur-[160px] pointer-events-none" data-interactive />
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center max-w-4xl mx-auto">
@@ -141,10 +168,11 @@ function Hero() {
 
         <div
           data-hero-visual
-          className="relative mt-20 mx-auto max-w-5xl aspect-[16/9] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent overflow-hidden glow-yellow"
+          data-interactive
+          className="relative mt-20 mx-auto max-w-5xl aspect-[16/9] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent overflow-hidden glow-yellow group perspective-1000"
         >
-          <div className="absolute inset-0 grid-bg opacity-40" />
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 grid-bg opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+          <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
             <div className="text-center">
               <div className="font-display text-7xl md:text-9xl font-bold text-yellow leading-none">
                 R$ 1.284<span className="text-white">,90</span>
@@ -177,7 +205,7 @@ function Stats() {
     <section className="border-y border-white/10 bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8" data-stagger>
         {stats.map((s) => (
-          <div key={s.l} className="text-center md:text-left">
+          <div key={s.l} data-interactive className="text-center md:text-left group hover:-translate-y-2 transition-transform duration-500">
             <div className="font-display text-3xl md:text-5xl font-bold text-yellow">{s.v}</div>
             <div className="text-sm text-white/55 mt-1">{s.l}</div>
           </div>
@@ -214,12 +242,13 @@ function WhyQuik() {
           {cards.map(({ icon: Icon, t, d }, idx) => (
             <div
               key={t}
-              className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-colors relative"
+              data-interactive
+              className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-all duration-500 relative perspective-1000"
             >
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow transition-all">
+              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow group-hover:rotate-12 transition-all duration-500">
                 <Icon className="w-5 h-5 text-yellow group-hover:text-black transition-colors" />
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3">{t}</h3>
+              <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-yellow transition-colors">{t}</h3>
               <p className="text-white/55 text-sm leading-relaxed">{d}</p>
               <div className="absolute top-6 right-6 text-white/10 font-mono text-xs">0{idx + 1}</div>
             </div>
@@ -255,7 +284,8 @@ function Awards() {
           {loop.map((a, i) => (
             <div
               key={i}
-              className="shrink-0 px-8 py-6 rounded-2xl border border-white/10 bg-black/40 text-base md:text-lg font-medium whitespace-nowrap hover:border-yellow transition-colors"
+              data-interactive
+              className="shrink-0 px-8 py-6 rounded-2xl border border-white/10 bg-black/40 text-base md:text-lg font-medium whitespace-nowrap hover:border-yellow hover:scale-110 transition-all duration-500"
             >
               {a}
             </div>
@@ -282,18 +312,18 @@ function Testimonials() {
         </h2>
         <div className="mt-16 grid md:grid-cols-3 gap-6" data-stagger>
           {items.map((t) => (
-            <div key={t.a} className="p-8 rounded-2xl border border-white/10 bg-[color:var(--surface)] flex flex-col">
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow text-yellow" />
-                ))}
+              <div key={t.a} data-interactive className="p-8 rounded-2xl border border-white/10 bg-[color:var(--surface)] flex flex-col group hover:border-yellow/30 transition-all duration-500">
+                <div className="flex gap-1 mb-6">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow text-yellow" />
+                  ))}
+                </div>
+                <p className="text-lg leading-relaxed text-white/85 flex-1 group-hover:text-white transition-colors">"{t.q}"</p>
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <div className="font-semibold">{t.a}</div>
+                  <div className="text-sm text-white/50">{t.r}</div>
+                </div>
               </div>
-              <p className="text-lg leading-relaxed text-white/85 flex-1">"{t.q}"</p>
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <div className="font-semibold">{t.a}</div>
-                <div className="text-sm text-white/50">{t.r}</div>
-              </div>
-            </div>
           ))}
         </div>
       </div>
@@ -307,45 +337,58 @@ function HowItWorks() {
     { n: "02", t: "Configure seu produto", d: "Adicione seu produto, defina o preço e personalize seu checkout em minutos." },
     { n: "03", t: "Venda e receba", d: "Compartilhe o link, venda para o Brasil inteiro e receba direto na sua conta." },
   ];
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (isServer) return;
+    if (isServer || !containerRef.current || !sectionRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from("[data-step]", {
-        x: -60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 70%" },
+      const horizontalSection = containerRef.current;
+      const totalWidth = horizontalSection!.scrollWidth;
+      
+      gsap.to(horizontalSection, {
+        x: () => -(totalWidth - window.innerWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${totalWidth}`,
+          scrub: 1,
+          pin: true,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (self.progress > 0.1 && self.progress < 0.9) {
+              document.body.classList.add("light-mode");
+            } else {
+              document.body.classList.remove("light-mode");
+            }
+          }
+        },
       });
-    }, ref);
+    }, sectionRef);
     return () => ctx.revert();
   }, []);
+
   return (
-    <section id="como" ref={ref} className="py-32 bg-[color:var(--surface)] border-y border-white/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+    <section id="como" ref={sectionRef} className="relative h-screen overflow-hidden flex items-center bg-[color:var(--surface)] transition-colors duration-500">
+      <div ref={containerRef} className="flex items-center gap-12 px-[10vw] min-w-max h-full">
+        <div className="w-[40vw] shrink-0">
           <span className="chip mb-6">Como funciona</span>
-          <h2 className="font-display text-4xl md:text-6xl font-bold">
-            Em <span className="text-yellow">3 passos</span>, você já está vendendo.
+          <h2 className="font-display text-4xl md:text-7xl font-bold">
+            Em <span className="text-yellow">3 passos</span>,<br />você já está vendendo.
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 relative">
-          {steps.map((s, i) => (
-            <div data-step key={s.n} className="relative p-8 rounded-2xl border border-white/10 bg-black">
-              <div className="font-display text-7xl font-bold text-yellow/20 mb-4">{s.n}</div>
-              <h3 className="font-display text-2xl font-semibold mb-3">{s.t}</h3>
-              <p className="text-white/55">{s.d}</p>
-              {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-8 h-8 text-yellow z-10" />
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-14">
-          <a href="#cta" className="btn-yellow">
-            Quero começar agora <ArrowRight className="w-4 h-4" />
+        {steps.map((s, i) => (
+          <div key={s.n} data-interactive className="relative p-12 w-[350px] md:w-[450px] rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm group hover:border-yellow/50 transition-all duration-500">
+            <div className="font-display text-8xl font-bold text-yellow/10 mb-4 group-hover:text-yellow/20 transition-colors">{s.n}</div>
+            <h3 className="font-display text-3xl font-semibold mb-4 group-hover:text-yellow transition-colors">{s.t}</h3>
+            <p className="text-white/55 text-lg leading-relaxed">{s.d}</p>
+          </div>
+        ))}
+        <div className="w-[40vw] shrink-0 flex flex-col items-center justify-center">
+          <h3 className="font-display text-4xl font-bold mb-8">Pronto para começar?</h3>
+          <a href="#cta" className="btn-yellow text-xl !px-12 !py-6">
+            Quero começar agora <ArrowRight className="w-6 h-6" />
           </a>
         </div>
       </div>
@@ -366,7 +409,7 @@ function Pricing() {
           Simples assim.
         </p>
 
-        <div data-reveal className="mt-16 p-10 md:p-14 rounded-3xl bg-yellow text-black relative overflow-hidden">
+        <div data-reveal data-interactive className="mt-16 p-10 md:p-14 rounded-3xl bg-yellow text-black relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-black/5" />
           <div className="relative">
             <div className="font-display text-6xl md:text-8xl font-bold leading-none">0%</div>
@@ -457,9 +500,10 @@ function FAQ() {
                   isOpen ? "border-yellow bg-yellow/5" : "border-white/10 bg-[color:var(--surface)] hover:border-white/30"
                 }`}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="font-display text-lg font-semibold">{f.q}</span>
-                  <span className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${isOpen ? "bg-yellow text-black" : "bg-white/5 text-white"}`}>
+                <div className="flex items-center justify-between gap-4 group">
+                  <span className="font-display text-lg font-semibold group-hover:text-yellow transition-colors">{f.q}</span>
+                  <span className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 ${isOpen ? "bg-yellow text-black rotate-180" : "bg-white/5 text-white"}`}>
+
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
                 </div>
@@ -491,10 +535,10 @@ function FinalCTA() {
           segura do mercado digital brasileiro.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4" data-reveal>
-          <a href="#" className="btn-yellow">
+          <a href="#" className="btn-yellow" data-interactive>
             Criar minha conta — é grátis <ArrowRight className="w-4 h-4" />
           </a>
-          <a href="#" className="btn-ghost">Falar com um especialista</a>
+          <a href="#" className="btn-ghost" data-interactive>Falar com um especialista</a>
         </div>
         <p className="mt-6 text-sm text-white/45" data-reveal>
           🔒 Sem cartão de crédito · Configuração em 5 minutos · Suporte humano incluído
@@ -508,7 +552,7 @@ function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="font-display text-2xl font-bold">
+        <div className="font-display text-2xl font-bold hover:scale-110 transition-transform cursor-pointer">
           quik<span className="text-yellow">.</span>
         </div>
         <div className="text-sm text-white/40">

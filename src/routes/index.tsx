@@ -404,22 +404,24 @@ function HowItWorks() {
       // Image coming towards screen animation at the end
       if (imageRef.current) {
         gsap.fromTo(imageRef.current, 
-          { scale: 0.2, opacity: 0, z: -1000 },
+          { scale: 0.1, opacity: 0, rotateX: 45, y: 100 },
           { 
             scale: 1, 
             opacity: 1, 
-            z: 0,
+            rotateX: 0,
+            y: 0,
             ease: "power2.out",
             scrollTrigger: {
               trigger: ".cta-trigger",
               containerAnimation: tl,
-              start: "left 80%",
-              end: "left 20%",
+              start: "left 90%",
+              end: "left 10%",
               scrub: true,
             }
           }
         );
       }
+
 
     }, sectionRef);
     return () => ctx.revert();

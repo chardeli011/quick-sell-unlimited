@@ -43,23 +43,49 @@ function useReveal() {
   useEffect(() => {
     if (isServer || !ref.current) return;
     const ctx = gsap.context(() => {
+      // General Reveal
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
           y: 40,
           opacity: 0,
           duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
+          ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
         });
       });
+
+      // Stagger
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((el, i) => {
         gsap.from(el, {
           y: 30,
           opacity: 0,
-          duration: 0.7,
-          delay: i * 0.06,
-          ease: "power2.out",
+          duration: 0.8,
+          delay: i * 0.08,
+          ease: "power3.out",
           scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
+
+      // Interactive Hover Effects (everything with data-interactive)
+      gsap.utils.toArray<HTMLElement>("[data-interactive]").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          gsap.to(el, { scale: 1.05, duration: 0.4, ease: "power2.out" });
+        });
+        el.addEventListener("mouseleave", () => {
+          gsap.to(el, { scale: 1, duration: 0.4, ease: "power2.out" });
+        });
+      });
+
+      // Magnetic Buttons
+      gsap.utils.toArray<HTMLElement>(".btn-yellow, .btn-ghost").forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+        });
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
         });
       });
     }, ref);
@@ -67,6 +93,7 @@ function useReveal() {
   }, []);
   return ref;
 }
+
 
 function Nav() {
   return (
@@ -214,12 +241,13 @@ function WhyQuik() {
           {cards.map(({ icon: Icon, t, d }, idx) => (
             <div
               key={t}
-              className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-colors relative"
+              data-interactive
+              className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-all duration-500 relative perspective-1000"
             >
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow transition-all">
+              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow group-hover:rotate-12 transition-all duration-500">
                 <Icon className="w-5 h-5 text-yellow group-hover:text-black transition-colors" />
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3">{t}</h3>
+              <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-yellow transition-colors">{t}</h3>
               <p className="text-white/55 text-sm leading-relaxed">{d}</p>
               <div className="absolute top-6 right-6 text-white/10 font-mono text-xs">0{idx + 1}</div>
             </div>
@@ -282,18 +310,18 @@ function Testimonials() {
         </h2>
         <div className="mt-16 grid md:grid-cols-3 gap-6" data-stagger>
           {items.map((t) => (
-            <div key={t.a} className="p-8 rounded-2xl border border-white/10 bg-[color:var(--surface)] flex flex-col">
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow text-yellow" />
-                ))}
+              <div key={t.a} data-interactive className="p-8 rounded-2xl border border-white/10 bg-[color:var(--surface)] flex flex-col group hover:border-yellow/30 transition-all duration-500">
+                <div className="flex gap-1 mb-6">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow text-yellow" />
+                  ))}
+                </div>
+                <p className="text-lg leading-relaxed text-white/85 flex-1 group-hover:text-white transition-colors">"{t.q}"</p>
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <div className="font-semibold">{t.a}</div>
+                  <div className="text-sm text-white/50">{t.r}</div>
+                </div>
               </div>
-              <p className="text-lg leading-relaxed text-white/85 flex-1">"{t.q}"</p>
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <div className="font-semibold">{t.a}</div>
-                <div className="text-sm text-white/50">{t.r}</div>
-              </div>
-            </div>
           ))}
         </div>
       </div>

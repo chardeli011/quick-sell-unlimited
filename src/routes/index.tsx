@@ -450,12 +450,16 @@ function HowItWorks() {
         ))}
         
         <div className="cta-trigger w-[60vw] shrink-0 flex flex-col items-center justify-center relative px-20 perspective-1000">
-          <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0">
-            <div className="w-[80%] h-[60%] rounded-2xl overflow-hidden shadow-2xl rotate-3">
+          <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-64 h-64 bg-yellow rounded-full glow-yellow flex items-center justify-center p-8">
               <img 
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" 
-                alt="Quik Dashboard Preview" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                src="/logo.png" 
+                alt="Quik Logo" 
+                className="w-full h-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
+                  (e.target as HTMLImageElement).classList.add("opacity-50", "rounded-2xl");
+                }}
               />
             </div>
           </div>

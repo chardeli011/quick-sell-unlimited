@@ -339,6 +339,7 @@ function HowItWorks() {
   ];
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isServer || !containerRef.current || !sectionRef.current) return;
@@ -346,9 +347,7 @@ function HowItWorks() {
       const horizontalSection = containerRef.current;
       const totalWidth = horizontalSection!.scrollWidth;
       
-      gsap.to(horizontalSection, {
-        x: () => -(totalWidth - window.innerWidth),
-        ease: "none",
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
@@ -357,14 +356,75 @@ function HowItWorks() {
           pin: true,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            if (self.progress > 0.1 && self.progress < 0.9) {
+            if (self.progress > 0.05 && self.progress < 0.95) {
               document.body.classList.add("light-mode");
             } else {
               document.body.classList.remove("light-mode");
             }
           }
-        },
+        }
       });
+
+      tl.to(horizontalSection, {
+        x: () => -(totalWidth - window.innerWidth),
+        ease: "none"
+      });
+
+      // Animate steps 1 by 1
+      gsap.utils.toArray<HTMLElement>(".step-card").forEach((card, i) => {
+        const number = card.querySelector(".step-number");
+        const title = card.querySelector(".step-title");
+        
+        gsap.to(number, {
+          color: "#22c55e",
+          scale: 1.1,
+          opacity: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: tl,
+            start: "left 60%",
+            end: "left 40%",
+            scrub: true,
+          }
+        });
+
+
+        gsap.to(title, {
+          color: "#22c55e",
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: tl,
+            start: "left 60%",
+            end: "left 40%",
+            scrub: true,
+          }
+        });
+      });
+
+      // Image coming towards screen animation at the end
+      if (imageRef.current) {
+        gsap.fromTo(imageRef.current, 
+          { scale: 0.1, opacity: 0, rotateX: 45, y: 100 },
+          { 
+            scale: 1, 
+            opacity: 1, 
+            rotateX: 0,
+            y: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".cta-trigger",
+              containerAnimation: tl,
+              start: "left 90%",
+              end: "left 10%",
+              scrub: true,
+            }
+          }
+        );
+      }
+
+
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -379,22 +439,35 @@ function HowItWorks() {
           </h2>
         </div>
         {steps.map((s, i) => (
-          <div key={s.n} data-interactive className="relative p-12 w-[350px] md:w-[450px] rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm group hover:border-yellow/50 transition-all duration-500">
-            <div className="font-display text-8xl font-bold text-yellow/10 mb-4 group-hover:text-yellow/20 transition-colors">{s.n}</div>
-            <h3 className="font-display text-3xl font-semibold mb-4 group-hover:text-yellow transition-colors">{s.t}</h3>
+          <div key={s.n} data-interactive className="step-card relative p-12 w-[350px] md:w-[450px] rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm group hover:border-yellow/50 transition-all duration-500">
+            <div className="step-number font-display text-8xl font-bold text-yellow/10 mb-4 transition-colors">{s.n}</div>
+            <h3 className="step-title font-display text-3xl font-semibold mb-4 transition-colors">{s.t}</h3>
             <p className="text-white/55 text-lg leading-relaxed">{s.d}</p>
           </div>
         ))}
-        <div className="w-[40vw] shrink-0 flex flex-col items-center justify-center">
-          <h3 className="font-display text-4xl font-bold mb-8">Pronto para começar?</h3>
-          <a href="#cta" className="btn-yellow text-xl !px-12 !py-6">
-            Quero começar agora <ArrowRight className="w-6 h-6" />
-          </a>
+        
+        <div className="cta-trigger w-[60vw] shrink-0 flex flex-col items-center justify-center relative px-20 perspective-1000">
+          <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0">
+            <div className="w-[80%] h-[60%] rounded-2xl overflow-hidden shadow-2xl rotate-3">
+              <img 
+                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" 
+                alt="Quik Dashboard Preview" 
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
+          </div>
+          <div className="relative z-10 text-center">
+            <h3 className="font-display text-5xl md:text-7xl font-bold mb-8">Pronto para começar?</h3>
+            <a href="#cta" className="btn-yellow text-2xl !px-16 !py-8">
+              Quero começar agora <ArrowRight className="w-8 h-8" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Pricing() {
   return (

@@ -376,7 +376,8 @@ function HowItWorks() {
         const title = card.querySelector(".step-title");
         
         gsap.to(number, {
-          color: "#22c55e", // A nice vibrant green
+          color: "#22c55e",
+          scale: 1.1,
           opacity: 1,
           duration: 0.5,
           scrollTrigger: {
@@ -387,6 +388,7 @@ function HowItWorks() {
             scrub: true,
           }
         });
+
 
         gsap.to(title, {
           color: "#22c55e",

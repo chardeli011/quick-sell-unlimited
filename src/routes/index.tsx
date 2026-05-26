@@ -99,8 +99,11 @@ function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-white/5 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-display text-2xl font-bold tracking-tight hover:scale-110 transition-transform">
-          quik<span className="text-yellow">.</span>
+        <a href="#" className="flex items-center gap-2 group">
+          <img src="/logo.png" alt="Quik Logo" className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" onError={(e) => {
+            (e.target as HTMLImageElement).style.display = 'none';
+            (e.target as HTMLImageElement).parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight">quik<span class="text-yellow">.</span></span>');
+          }} />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
           <a href="#por-que" className="hover:text-yellow hover:-translate-y-1 transition-all">Plataforma</a>
@@ -376,7 +379,7 @@ function HowItWorks() {
         const title = card.querySelector(".step-title");
         
         gsap.to(number, {
-          color: "#22c55e",
+          color: "#FEFF00",
           scale: 1.1,
           opacity: 1,
           duration: 0.5,
@@ -391,7 +394,7 @@ function HowItWorks() {
 
 
         gsap.to(title, {
-          color: "#22c55e",
+          color: "#FEFF00",
           duration: 0.5,
           scrollTrigger: {
             trigger: card,
@@ -447,12 +450,16 @@ function HowItWorks() {
         ))}
         
         <div className="cta-trigger w-[60vw] shrink-0 flex flex-col items-center justify-center relative px-20 perspective-1000">
-          <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0">
-            <div className="w-[80%] h-[60%] rounded-2xl overflow-hidden shadow-2xl rotate-3">
+          <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-64 h-64 bg-yellow rounded-full glow-yellow flex items-center justify-center p-8">
               <img 
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" 
-                alt="Quik Dashboard Preview" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                src="/logo.png" 
+                alt="Quik Logo" 
+                className="w-full h-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
+                  (e.target as HTMLImageElement).classList.add("opacity-50", "rounded-2xl");
+                }}
               />
             </div>
           </div>

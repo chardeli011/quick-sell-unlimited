@@ -335,45 +335,58 @@ function HowItWorks() {
     { n: "02", t: "Configure seu produto", d: "Adicione seu produto, defina o preço e personalize seu checkout em minutos." },
     { n: "03", t: "Venda e receba", d: "Compartilhe o link, venda para o Brasil inteiro e receba direto na sua conta." },
   ];
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (isServer) return;
+    if (isServer || !containerRef.current || !sectionRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from("[data-step]", {
-        x: -60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 70%" },
+      const horizontalSection = containerRef.current;
+      const totalWidth = horizontalSection!.scrollWidth;
+      
+      gsap.to(horizontalSection, {
+        x: () => -(totalWidth - window.innerWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${totalWidth}`,
+          scrub: 1,
+          pin: true,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (self.progress > 0.1 && self.progress < 0.9) {
+              document.body.classList.add("light-mode");
+            } else {
+              document.body.classList.remove("light-mode");
+            }
+          }
+        },
       });
-    }, ref);
+    }, sectionRef);
     return () => ctx.revert();
   }, []);
+
   return (
-    <section id="como" ref={ref} className="py-32 bg-[color:var(--surface)] border-y border-white/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+    <section id="como" ref={sectionRef} className="relative h-screen overflow-hidden flex items-center bg-[color:var(--surface)] transition-colors duration-500">
+      <div ref={containerRef} className="flex items-center gap-12 px-[10vw] min-w-max h-full">
+        <div className="w-[40vw] shrink-0">
           <span className="chip mb-6">Como funciona</span>
-          <h2 className="font-display text-4xl md:text-6xl font-bold">
-            Em <span className="text-yellow">3 passos</span>, você já está vendendo.
+          <h2 className="font-display text-4xl md:text-7xl font-bold">
+            Em <span className="text-yellow">3 passos</span>,<br />você já está vendendo.
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 relative">
-          {steps.map((s, i) => (
-            <div data-step key={s.n} className="relative p-8 rounded-2xl border border-white/10 bg-black">
-              <div className="font-display text-7xl font-bold text-yellow/20 mb-4">{s.n}</div>
-              <h3 className="font-display text-2xl font-semibold mb-3">{s.t}</h3>
-              <p className="text-white/55">{s.d}</p>
-              {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 w-8 h-8 text-yellow z-10" />
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-14">
-          <a href="#cta" className="btn-yellow">
-            Quero começar agora <ArrowRight className="w-4 h-4" />
+        {steps.map((s, i) => (
+          <div key={s.n} data-interactive className="relative p-12 w-[350px] md:w-[450px] rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm group hover:border-yellow/50 transition-all duration-500">
+            <div className="font-display text-8xl font-bold text-yellow/10 mb-4 group-hover:text-yellow/20 transition-colors">{s.n}</div>
+            <h3 className="font-display text-3xl font-semibold mb-4 group-hover:text-yellow transition-colors">{s.t}</h3>
+            <p className="text-white/55 text-lg leading-relaxed">{s.d}</p>
+          </div>
+        ))}
+        <div className="w-[40vw] shrink-0 flex flex-col items-center justify-center">
+          <h3 className="font-display text-4xl font-bold mb-8">Pronto para começar?</h3>
+          <a href="#cta" className="btn-yellow text-xl !px-12 !py-6">
+            Quero começar agora <ArrowRight className="w-6 h-6" />
           </a>
         </div>
       </div>

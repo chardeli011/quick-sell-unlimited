@@ -100,10 +100,20 @@ function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/40 border-b border-white/5 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <img src="https://lovable.dev/placeholder.svg" alt="Quik Logo" className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-            (e.target as HTMLImageElement).parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight">quik<span class="text-yellow">.</span></span>');
-          }} />
+          <img 
+            src="/logo.png" 
+            alt="Quik Logo" 
+            className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" 
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (target.src.includes('logo.png')) {
+                target.src = "/logo.svg";
+                return;
+              }
+              target.style.display = 'none';
+              target.parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight text-white">quik<span class="text-yellow">.</span></span>');
+            }} 
+          />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
           <a href="#por-que" className="hover:text-yellow hover:-translate-y-1 transition-all">Plataforma</a>
@@ -453,12 +463,17 @@ function HowItWorks() {
           <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-64 h-64 bg-yellow rounded-full glow-yellow flex items-center justify-center p-8">
               <img 
-                src="https://lovable.dev/placeholder.svg" 
+                src="/logo.png" 
                 alt="Quik Logo" 
                 className="w-full h-auto object-contain"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
-                  (e.target as HTMLImageElement).classList.add("opacity-50", "rounded-2xl");
+                  const target = e.target as HTMLImageElement;
+                  if (target.src.includes('logo.png')) {
+                    target.src = "/logo.svg";
+                    return;
+                  }
+                  target.src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
+                  target.classList.add("opacity-50", "rounded-2xl");
                 }}
               />
             </div>

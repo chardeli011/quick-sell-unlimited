@@ -353,7 +353,7 @@ function HowItWorks() {
           trigger: sectionRef.current,
           start: "top top",
           end: () => `+=${totalWidth}`,
-          scrub: 1,
+          scrub: 0.5,
           pin: true,
           invalidateOnRefresh: true,
           onUpdate: (self) => {

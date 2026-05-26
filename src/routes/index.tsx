@@ -204,7 +204,7 @@ function WhyQuik() {
         </div>
 
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden" data-stagger>
-          {cards.map(({ icon: Icon, t, d }) => (
+          {cards.map(({ icon: Icon, t, d }, idx) => (
             <div
               key={t}
               className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-colors relative"
@@ -214,7 +214,7 @@ function WhyQuik() {
               </div>
               <h3 className="font-display text-xl font-semibold mb-3">{t}</h3>
               <p className="text-white/55 text-sm leading-relaxed">{d}</p>
-              <div className="absolute top-6 right-6 text-white/10 font-mono text-xs">0{cards.indexOf({ icon: Icon, t, d }) + 1}</div>
+              <div className="absolute top-6 right-6 text-white/10 font-mono text-xs">0{idx + 1}</div>
             </div>
           ))}
         </div>

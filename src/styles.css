@@ -110,8 +110,9 @@
     color: rgba(0, 0, 0, 0.7) !important;
   }
   body.light-mode .text-yellow\/10 {
-    color: rgba(0, 0, 0, 0.1) !important;
+    color: rgba(0, 0, 0, 0.2) !important;
   }
+
   .step-progress-fill {
     color: #FEFF00;
     transition: color 0.4s ease;

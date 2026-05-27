@@ -462,16 +462,12 @@ function HowItWorks() {
           <div ref={imageRef} className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-64 h-64 bg-yellow rounded-full glow-yellow flex items-center justify-center p-8">
               <img 
-                src="/logo.png" 
+                src="https://i.ibb.co/Vp8p36C/logo-quik.png" 
                 alt="Quik Logo" 
                 className="w-full h-auto object-contain"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  if (target.src.includes('logo.png')) {
-                    target.src = "/logo.svg";
-                    return;
-                  }
-                  target.src = "https://i.ibb.co/Vp8p36C/logo-quik.png"; // Placeholder image for debugging if needed, or fallback
+                  target.src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
                   target.classList.add("opacity-50", "rounded-2xl");
                 }}
               />

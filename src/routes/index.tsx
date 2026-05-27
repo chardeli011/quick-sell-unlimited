@@ -111,8 +111,9 @@ function Nav() {
                 return;
               }
               target.style.display = 'none';
-              target.parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight text-white">quik<span class="text-yellow">.</span></span>');
+              target.parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight text-white pointer-events-none">quik<span class="text-yellow">.</span></span>');
             }} 
+
           />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
@@ -472,7 +473,7 @@ function HowItWorks() {
                     target.src = "/logo.svg";
                     return;
                   }
-                  target.src = "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800";
+                  target.src = "https://i.ibb.co/Vp8p36C/logo-quik.png"; // Placeholder image for debugging if needed, or fallback
                   target.classList.add("opacity-50", "rounded-2xl");
                 }}
               />

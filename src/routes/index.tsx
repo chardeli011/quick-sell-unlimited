@@ -110,10 +110,13 @@ function Nav() {
                 target.src = "/logo.svg";
                 return;
               }
+              // Fallback text if both images fail
               target.style.display = 'none';
-              target.parentElement!.insertAdjacentHTML('beforeend', '<span class="font-display text-2xl font-bold tracking-tight text-white pointer-events-none">quik<span class="text-yellow">.</span></span>');
+              const textLogo = document.createElement('span');
+              textLogo.className = "font-display text-2xl font-bold tracking-tight text-white pointer-events-none";
+              textLogo.innerHTML = 'quik<span class="text-yellow">.</span>';
+              target.parentElement?.appendChild(textLogo);
             }} 
-
           />
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">

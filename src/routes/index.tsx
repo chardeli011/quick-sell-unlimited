@@ -652,7 +652,7 @@ function Footer() {
           quik<span className="text-yellow">.</span>
         </div>
         <div className="text-sm text-white/40">
-          © {isServer ? "2024" : new Date().getFullYear()} Quik. A plataforma de pagamentos para quem leva o digital a sério.
+          © 2026 Quik. A plataforma de pagamentos para quem leva o digital a sério.
         </div>
         <div className="flex gap-6 text-sm text-white/50">
           <a href="#" className="hover:text-yellow">Termos</a>

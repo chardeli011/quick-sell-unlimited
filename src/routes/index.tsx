@@ -101,16 +101,11 @@ function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
           <img 
-            src="/logo.png" 
+            src="https://i.ibb.co/Vp8p36C/logo-quik.png" 
             alt="Quik Logo" 
             className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" 
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              if (target.src.includes('logo.png')) {
-                target.src = "/logo.svg";
-                return;
-              }
-              // Fallback text if both images fail
               target.style.display = 'none';
               const textLogo = document.createElement('span');
               textLogo.className = "font-display text-2xl font-bold tracking-tight text-white pointer-events-none";

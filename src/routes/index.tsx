@@ -169,10 +169,10 @@ function Hero() {
             rápida e segura do primeiro produto ao primeiro milhão.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a data-hero-cta href="#cta" className="btn-yellow">
+            <a data-hero-cta href="#cta" className="btn-yellow min-w-[240px]">
               Criar minha conta grátis <ArrowRight className="w-4 h-4" />
             </a>
-            <a data-hero-cta href="#como" className="btn-ghost">
+            <a data-hero-cta href="#como" className="btn-ghost min-w-[240px]">
               Ver como funciona
             </a>
           </div>

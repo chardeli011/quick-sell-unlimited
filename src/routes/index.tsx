@@ -168,11 +168,11 @@ function Hero() {
             A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
             rápida e segura do primeiro produto ao primeiro milhão.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a data-hero-cta href="#cta" className="btn-yellow min-w-[240px]">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[280px]">
               Criar minha conta grátis <ArrowRight className="w-4 h-4" />
             </a>
-            <a data-hero-cta href="#como" className="btn-ghost min-w-[240px]">
+            <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[280px]">
               Ver como funciona
             </a>
           </div>

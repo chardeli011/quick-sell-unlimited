@@ -166,7 +166,7 @@ function Hero() {
           </h1>
           <p data-hero-sub className="mt-8 text-lg md:text-xl text-white/65 max-w-2xl mx-auto">
             A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
-            rápida e segura — do primeiro produto ao primeiro milhão.
+            rápida e segura do primeiro produto ao primeiro milhão.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a data-hero-cta href="#cta" className="btn-yellow">

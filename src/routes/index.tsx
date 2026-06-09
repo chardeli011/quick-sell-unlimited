@@ -201,9 +201,7 @@ function Hero() {
         scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
       });
 
-    }, heroRef);
 
-    }, heroRef);
     return () => ctx.revert();
   }, []);
 

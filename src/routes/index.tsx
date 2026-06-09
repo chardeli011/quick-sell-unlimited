@@ -66,14 +66,24 @@ function useReveal() {
         const text = title.textContent || "";
         title.innerHTML = "";
         
-        const chars = text.split("");
-        chars.forEach(char => {
-          const span = document.createElement("span");
-          span.textContent = char;
-          span.style.opacity = "0";
-          span.style.display = "inline-block";
-          span.style.whiteSpace = "pre";
-          title.appendChild(span);
+        // Split into words so words never break across lines; animate chars within
+        const words = text.split(/(\s+)/);
+        words.forEach(word => {
+          if (/^\s+$/.test(word)) {
+            title.appendChild(document.createTextNode(word));
+            return;
+          }
+          const wordSpan = document.createElement("span");
+          wordSpan.style.display = "inline-block";
+          wordSpan.style.whiteSpace = "nowrap";
+          word.split("").forEach(char => {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.style.opacity = "0";
+            span.style.display = "inline-block";
+            wordSpan.appendChild(span);
+          });
+          title.appendChild(wordSpan);
         });
 
         gsap.to(title.querySelectorAll("span"), {

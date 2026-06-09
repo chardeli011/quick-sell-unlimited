@@ -800,7 +800,7 @@ function Footer() {
     <footer className="border-t border-white/10 bg-black py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="font-display text-2xl font-bold hover:scale-110 transition-transform cursor-pointer">
-          quik<span className="text-yellow">.</span>
+          <img src="/logoquik.svg" alt="Quik Logo" className="h-8 w-auto" />
         </div>
         <div className="text-sm text-white/40">
           © 2026 Quik. A plataforma de pagamentos para quem leva o digital a sério.

@@ -543,7 +543,7 @@ function Security() {
             className="mt-10 p-6 border-l-4 border-yellow bg-black/40 italic text-white/80"
           >
             "A Quik processa transações com o mesmo padrão de segurança dos grandes bancos digitais
-            — porque você merece o mesmo nível de proteção."
+            porque você merece o mesmo nível de proteção."
           </blockquote>
         </div>
         <div className="grid sm:grid-cols-2 gap-4" data-stagger>

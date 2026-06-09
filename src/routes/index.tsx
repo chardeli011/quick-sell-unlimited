@@ -201,9 +201,10 @@ function Hero() {
         scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
       });
 
-
+    }, heroRef);
     return () => ctx.revert();
   }, []);
+
 
   const HeroContent = ({ className = "", isSpotlight = false }: { className?: string, isSpotlight?: boolean }) => (
     <div className={`text-center max-w-4xl mx-auto ${className}`}>

@@ -221,7 +221,7 @@ function Hero() {
       <span data-hero-chip className={`chip mb-8 ${isSpotlight ? 'border-black/20 text-black/80' : ''}`}>
         <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
       </span>
-      <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight">
+      <h1 data-no-typewriter className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight">
         <span className="block">Venda mais.</span>
         <span className="block">Receba na hora.</span>
         <span className="block hero-shine">Escale sem limite.</span>

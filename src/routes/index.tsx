@@ -89,6 +89,29 @@ function useReveal() {
         });
       });
 
+      // Number Counter Animation
+      gsap.utils.toArray<HTMLElement>("[data-counter]").forEach((el) => {
+        const target = parseFloat(el.getAttribute("data-counter") || "0");
+        const suffix = el.getAttribute("data-suffix") || "";
+        const prefix = el.getAttribute("data-prefix") || "";
+        const decimals = el.getAttribute("data-decimals") === "1" ? 1 : 0;
+        
+        const obj = { value: 0 };
+        gsap.to(obj, {
+          value: target,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          },
+          onUpdate: () => {
+            el.textContent = prefix + obj.value.toFixed(decimals).replace(".", ",") + suffix;
+          }
+        });
+      });
+
       // Stagger
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((el, i) => {
         gsap.from(el, {
@@ -229,17 +252,25 @@ function Hero() {
 
 function Stats() {
   const stats = [
-    { v: "+R$ 50M", l: "processados" },
-    { v: "+12.000", l: "produtores ativos" },
-    { v: "99,9%", l: "uptime garantido" },
-    { v: "5 min", l: "pra começar a vender" },
+    { v: "50", l: "processados", prefix: "+R$ ", suffix: "M" },
+    { v: "12000", l: "produtores ativos", prefix: "+", suffix: "" },
+    { v: "99.9", l: "uptime garantido", prefix: "", suffix: "%", decimals: 1 },
+    { v: "5", l: "pra começar a vender", prefix: "", suffix: " min" },
   ];
   return (
     <section className="border-y border-white/10 bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8" data-stagger>
         {stats.map((s) => (
           <div key={s.l} data-interactive className="text-center md:text-left group hover:-translate-y-2 transition-transform duration-500">
-            <div className="font-display text-3xl md:text-5xl font-bold text-yellow">{s.v}</div>
+            <div 
+              className="font-display text-3xl md:text-5xl font-bold text-yellow"
+              data-counter={s.v}
+              data-prefix={s.prefix}
+              data-suffix={s.suffix}
+              data-decimals={s.decimals || 0}
+            >
+              0
+            </div>
             <div className="text-sm text-white/55 mt-1">{s.l}</div>
           </div>
         ))}

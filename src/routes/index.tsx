@@ -243,13 +243,6 @@ function Hero() {
 
 function Stats() {
   const stats = [
-    { v: "+R$ 50M", l: "processados" },
-    { v: "+12.000", l: "produtores ativos" },
-    { v: "99,9%", l: "uptime garantido" },
-    { v: "5 min", l: "pra começar a vender" },
-  ];
-function Stats() {
-  const stats = [
     { v: "50", l: "processados", prefix: "+R$ ", suffix: "M" },
     { v: "12000", l: "produtores ativos", prefix: "+", suffix: "" },
     { v: "99.9", l: "uptime garantido", prefix: "", suffix: "%", decimals: 1 },

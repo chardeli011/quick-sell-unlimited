@@ -685,15 +685,7 @@ function GatewayAwards() {
               </div>
             </div>
 
-            {/* Award Info */}
-            <div className="mt-12 text-center" style={{ transform: "translateZ(80px)" }}>
-              <div className="text-yellow font-display text-3xl md:text-5xl font-bold mb-3 tracking-tight">
-                {award.title}
-              </div>
-              <div className="text-white/80 text-xl md:text-2xl font-medium tracking-wide">
-                {award.org}
-              </div>
-            </div>
+            {/* Award Info removed as requested */}
           </div>
         ))}
       </div>

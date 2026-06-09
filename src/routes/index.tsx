@@ -556,7 +556,8 @@ function HowItWorks() {
           <div className="relative z-10 text-center">
             <h3 className="font-display text-5xl md:text-7xl font-bold mb-8">Pronto para começar?</h3>
             <a href="#cta" className="btn-yellow text-2xl !px-16 !py-8">
-              Quero começar agora <ArrowRight className="w-8 h-8" />
+              <span className="btn-flip-content">Quero começar agora <ArrowRight className="w-8 h-8" /></span>
+              <span className="btn-flip-hidden">Quero começar agora <ArrowRight className="w-8 h-8" /></span>
             </a>
           </div>
         </div>
@@ -857,10 +858,12 @@ function FinalCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
           <a 
             href="#" 
-            className="group relative px-8 py-4 bg-yellow text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(254,255,0,0.3)]"
+            className="btn-yellow text-lg !px-10 !py-5"
             data-interactive
           >
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="btn-flip-content">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
+            <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
+          </a>
               Criar conta gratuita <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </span>
           </a>

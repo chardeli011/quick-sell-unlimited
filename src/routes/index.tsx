@@ -220,23 +220,31 @@ function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const HeroContent = ({ className = "" }: { className?: string }) => (
+  const HeroContent = ({ className = "", isSpotlight = false }: { className?: string, isSpotlight?: boolean }) => (
     <div className={`text-center max-w-4xl mx-auto ${className}`}>
-      <span data-hero-chip className="chip mb-8">
+      <span data-hero-chip className={`chip mb-8 ${isSpotlight ? 'border-black/20 text-black/80' : ''}`}>
         <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
       </span>
       <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
         Venda mais. Receba na hora. Escale sem limite.
       </h1>
-      <p data-hero-sub className="mt-8 text-lg md:text-xl opacity-65 max-w-2xl mx-auto">
+      <p data-hero-sub className={`mt-8 text-lg md:text-xl max-w-2xl mx-auto ${isSpotlight ? 'text-black/70' : 'opacity-65'}`}>
         A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
         rápida e segura do primeiro produto ao primeiro milhão.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[320px] justify-center">
+        <a 
+          data-hero-cta 
+          href="#cta" 
+          className={`btn-yellow w-full sm:w-[320px] justify-center shadow-2xl ${isSpotlight ? 'bg-black text-yellow border-black' : ''}`}
+        >
           Criar minha conta grátis <ArrowRight className="w-4 h-4" />
         </a>
-        <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[320px] justify-center">
+        <a 
+          data-hero-cta 
+          href="#como" 
+          className={`btn-ghost w-full sm:w-[320px] justify-center ${isSpotlight ? 'border-black/20 text-black hover:bg-black/5' : ''}`}
+        >
           Ver como funciona
         </a>
       </div>

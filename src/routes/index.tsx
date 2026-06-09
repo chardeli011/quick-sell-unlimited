@@ -595,22 +595,21 @@ function GatewayAwards() {
               <div className="absolute inset-0 bg-yellow/20 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
               
               {/* Image Container */}
-              <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-3xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl shadow-yellow/10">
+              <div className="relative w-64 h-64 md:w-[500px] md:h-[500px] flex items-center justify-center">
                 <img 
                   src={award.img} 
                   alt={award.title}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(254,255,0,0.3)]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               </div>
             </div>
 
             {/* Award Info */}
-            <div className="mt-8 text-center" style={{ transform: "translateZ(50px)" }}>
-              <div className="text-yellow font-display text-2xl md:text-4xl font-bold mb-2">
+            <div className="mt-12 text-center" style={{ transform: "translateZ(80px)" }}>
+              <div className="text-yellow font-display text-3xl md:text-5xl font-bold mb-3 tracking-tight">
                 {award.title}
               </div>
-              <div className="text-white/60 text-lg md:text-xl font-medium tracking-wide">
+              <div className="text-white/80 text-xl md:text-2xl font-medium tracking-wide">
                 {award.org}
               </div>
             </div>

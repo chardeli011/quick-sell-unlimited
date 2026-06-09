@@ -843,23 +843,62 @@ function FAQ() {
 
 function FinalCTA() {
   return (
-    <section id="cta" className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-40" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-yellow/20 blur-[180px] pointer-events-none" />
-      <div className="relative max-w-4xl mx-auto px-6 text-center">
-        <h2 className="font-display text-5xl md:text-7xl font-bold leading-[1.02]" data-reveal>
-          Seu próximo lançamento <span className="text-yellow">começa agora.</span>
-        </h2>
-        <p className="mt-6 text-lg text-white/65 max-w-2xl mx-auto" data-reveal>
-          Junte-se a milhares de produtores que escolheram a plataforma mais simples, rápida e
-          segura do mercado digital brasileiro.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4" data-reveal>
-          <a href="#" className="btn-yellow" data-interactive>
-            Criar minha conta — é grátis <ArrowRight className="w-4 h-4" />
-          </a>
-          <a href="#" className="btn-ghost" data-interactive>Falar com um especialista</a>
+    <section id="cta" className="py-40 relative overflow-hidden bg-black">
+      {/* Refined Grid Background */}
+      <div className="absolute inset-0 grid-bg opacity-[0.15]" />
+      
+      {/* Subtle Radial Glow */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-[100%] pointer-events-none opacity-20"
+        style={{
+          background: 'radial-gradient(circle, rgba(254, 255, 0, 0.15) 0%, transparent 70%)',
+          filter: 'blur(100px)'
+        }}
+      />
+
+      <div className="relative max-w-4xl mx-auto px-6 text-center z-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-white/60 text-xs font-medium mb-8 backdrop-blur-sm" data-reveal>
+          <Zap className="w-3 h-3 text-yellow" />
+          <span>Plataforma pronta em minutos</span>
         </div>
+        
+        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8" data-reveal>
+          Pronto para começar?
+        </h2>
+        
+        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-12 font-medium leading-relaxed" data-reveal>
+          Crie sua conta, receba pagamentos globais e escale sua operação com a Quik.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
+          <a 
+            href="#" 
+            className="group relative px-8 py-4 bg-yellow text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(254,255,0,0.3)]"
+            data-interactive
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Criar conta gratuita <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </a>
+          <a 
+            href="#" 
+            className="text-white/40 hover:text-white transition-colors duration-300 font-medium border-b border-transparent hover:border-white/20 pb-1"
+            data-interactive
+          >
+            Falar com um especialista
+          </a>
+        </div>
+        
+        <div className="mt-16 flex items-center justify-center gap-8 opacity-20 grayscale" data-reveal>
+           {/* Particles or subtle tech details could go here, but keeping it clean for premium feel */}
+           <div className="w-1 h-1 rounded-full bg-white" />
+           <div className="w-1 h-1 rounded-full bg-white" />
+           <div className="w-1 h-1 rounded-full bg-white" />
+        </div>
+      </div>
+    </section>
+  );
+}
         <p className="mt-6 text-sm text-white/45" data-reveal>
           🔒 Sem cartão de crédito · Configuração em 5 minutos · Suporte humano incluído
         </p>

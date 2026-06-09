@@ -557,15 +557,6 @@ function GatewayAwards() {
           anticipatePin: 1,
         }
       });
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: `+=${totalSteps * 100}%`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        }
-      });
 
       items.forEach((item, i) => {
         // Reset states

@@ -72,7 +72,7 @@ function useReveal() {
           span.textContent = char;
           span.style.opacity = "0";
           span.style.display = "inline-block";
-          if (char === " ") span.style.width = "0.25em";
+          span.style.whiteSpace = "pre";
           title.appendChild(span);
         });
 

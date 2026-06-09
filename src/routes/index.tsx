@@ -51,11 +51,11 @@ function useReveal() {
         }
         
         gsap.from(el, {
-          y: 40,
+          y: 20,
           opacity: 0,
-          duration: 0.9,
-          ease: "power4.out",
-          scrollTrigger: { trigger: el, start: "top 90%" },
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 95%" },
         });
       });
 
@@ -89,12 +89,12 @@ function useReveal() {
 
         gsap.to(title.querySelectorAll("span"), {
           opacity: 1,
-          stagger: 0.03,
-          duration: 0.05,
+          stagger: 0.02,
+          duration: 0.04,
           ease: "none",
           scrollTrigger: {
             trigger: title,
-            start: "top 85%",
+            start: "top 95%",
             toggleActions: "play none none reverse",
           }
         });
@@ -114,7 +114,7 @@ function useReveal() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 95%",
             toggleActions: "play none none none"
           },
           onUpdate: () => {
@@ -126,12 +126,12 @@ function useReveal() {
       // Stagger
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((el, i) => {
         gsap.from(el, {
-          y: 30,
+          y: 20,
           opacity: 0,
-          duration: 0.8,
-          delay: i * 0.08,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 90%" },
+          duration: 0.6,
+          delay: i * 0.05,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 95%" },
         });
       });
 

@@ -45,12 +45,47 @@ function useReveal() {
     const ctx = gsap.context(() => {
       // General Reveal
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+        // Skip elements that are part of titles (h1, h2, h3) to avoid conflicts with typewriter effect
+        if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') {
+          return;
+        }
+        
         gsap.from(el, {
           y: 40,
           opacity: 0,
           duration: 0.9,
           ease: "power4.out",
           scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
+
+      // Typewriter Effect for all Titles
+      gsap.utils.toArray<HTMLElement>("h1, h2, h3").forEach((title) => {
+        // Skip titles in the specialized scroll sections if they already have custom animations
+        // but we'll apply it widely first.
+        const text = title.textContent || "";
+        title.innerHTML = "";
+        
+        const chars = text.split("");
+        chars.forEach(char => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.opacity = "0";
+          span.style.display = "inline-block";
+          if (char === " ") span.style.width = "0.25em";
+          title.appendChild(span);
+        });
+
+        gsap.to(title.querySelectorAll("span"), {
+          opacity: 1,
+          stagger: 0.03,
+          duration: 0.05,
+          ease: "none",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          }
         });
       });
 
@@ -131,7 +166,6 @@ function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from("[data-hero-chip]", { y: 20, opacity: 0, duration: 0.6, clearProps: "all" })
-        .from("[data-hero-title] span", { y: 80, opacity: 0, duration: 1, stagger: 0.08, clearProps: "all" }, "-=0.2")
         .from("[data-hero-sub]", { y: 20, opacity: 0, duration: 0.7, clearProps: "all" }, "-=0.5")
         .from("[data-hero-cta]", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, clearProps: "all" }, "-=0.4")
         .from("[data-hero-visual]", { scale: 0.9, opacity: 0, duration: 1.1, clearProps: "all" }, "-=0.7");
@@ -155,10 +189,8 @@ function Hero() {
           <span data-hero-chip className="chip mb-8">
             <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
           </span>
-          <h1 data-hero-title className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
-            <span className="inline-block">Venda mais.</span>{" "}
-            <span className="inline-block text-yellow">Receba na hora.</span>{" "}
-            <span className="inline-block">Escale sem limite.</span>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
+            Venda mais. Receba na hora. Escale sem limite.
           </h1>
           <p data-hero-sub className="mt-8 text-lg md:text-xl text-white/65 max-w-2xl mx-auto">
             A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
@@ -515,34 +547,6 @@ function GatewayAwards() {
       const items = itemsRef.current;
       const totalSteps = items.length;
       
-      // Text writing animation
-      const title = containerRef.current?.querySelector(".awards-title");
-      if (title) {
-        const text = title.textContent || "";
-        title.textContent = "";
-        
-        const chars = text.split("");
-        chars.forEach(char => {
-          const span = document.createElement("span");
-          span.textContent = char;
-          span.style.opacity = "0";
-          span.style.display = "inline-block";
-          title.appendChild(span);
-        });
-
-        gsap.to(title.querySelectorAll("span"), {
-          opacity: 1,
-          stagger: 0.05,
-          duration: 0.1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 20%",
-            toggleActions: "play none none reverse",
-          }
-        });
-      }
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,

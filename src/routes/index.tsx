@@ -184,6 +184,8 @@ function Nav() {
 
 function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isServer) return;
     const ctx = gsap.context(() => {
@@ -198,38 +200,78 @@ function Hero() {
         ease: "none",
         scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
       });
+
+      // Spotlight interaction
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!spotlightRef.current) return;
+        const { clientX, clientY } = e;
+        gsap.to(spotlightRef.current, {
+          x: clientX,
+          y: clientY,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
+  const HeroContent = ({ className = "" }: { className?: string }) => (
+    <div className={`text-center max-w-4xl mx-auto ${className}`}>
+      <span data-hero-chip className="chip mb-8">
+        <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
+      </span>
+      <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
+        Venda mais. Receba na hora. Escale sem limite.
+      </h1>
+      <p data-hero-sub className="mt-8 text-lg md:text-xl opacity-65 max-w-2xl mx-auto">
+        A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
+        rápida e segura do primeiro produto ao primeiro milhão.
+      </p>
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[320px] justify-center">
+          Criar minha conta grátis <ArrowRight className="w-4 h-4" />
+        </a>
+        <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[320px] justify-center">
+          Ver como funciona
+        </a>
+      </div>
+    </div>
+  );
+
   return (
-    <section ref={heroRef} className="relative pt-32 pb-24 overflow-hidden">
+    <section ref={heroRef} className="relative pt-32 pb-24 overflow-hidden group/hero">
       <div data-hero-bg className="absolute inset-0 grid-bg opacity-60" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-yellow/10 blur-[160px] pointer-events-none" data-interactive />
+      
+      {/* Background Hero Content (White Text) */}
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
+        <HeroContent className="text-white" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-4xl mx-auto">
-          <span data-hero-chip className="chip mb-8">
-            <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
-          </span>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
-            Venda mais. Receba na hora. Escale sem limite.
-          </h1>
-          <p data-hero-sub className="mt-8 text-lg md:text-xl text-white/65 max-w-2xl mx-auto">
-            A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
-            rápida e segura do primeiro produto ao primeiro milhão.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[320px] justify-center">
-              Criar minha conta grátis <ArrowRight className="w-4 h-4" />
-            </a>
-            <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[320px] justify-center">
-              Ver como funciona
-            </a>
-          </div>
+      {/* Spotlight Layer (Yellow Background + Black Text) */}
+      <div 
+        ref={spotlightRef}
+        className="fixed inset-0 pointer-events-none z-20"
+        style={{
+          clipPath: 'circle(150px at -100% -100%)',
+          backgroundColor: '#FFD700',
+        }}
+      >
+        <div className="relative max-w-7xl mx-auto px-6 pt-32 h-full">
+          <HeroContent className="text-black" />
         </div>
+      </div>
 
-        <div
+      <style dangerouslySetInnerHTML={{ __html: `
+        .group\\/hero:hover div[ref="spotlightRef"] {
+          /* This is handled by GSAP, but we need the clip-path to exist */
+        }
+      `}} />
+
+      <div className="relative max-w-7xl mx-auto px-6 z-30">
           data-hero-visual
           className="relative mt-20 mx-auto w-full max-w-none overflow-visible flex justify-center"
         >

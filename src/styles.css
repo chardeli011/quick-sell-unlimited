@@ -232,10 +232,10 @@
     0%   { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
-  .btn-yellow {
+  .btn-yellow, .btn-ghost {
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
-    background: var(--yellow);
-    color: #000;
     font-weight: 600;
     padding: 0.95rem 1.6rem;
     border-radius: 9999px;
@@ -243,29 +243,51 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    transition: box-shadow .3s ease, transform .3s ease;
+  }
+  .btn-yellow {
+    background: var(--yellow);
+    color: #000;
     box-shadow: 0 10px 30px -10px rgba(254,255,0,0.5);
   }
   .btn-yellow:hover {
-    transform: translateY(-2px);
     box-shadow: 0 18px 40px -12px rgba(254,255,0,0.7);
   }
   .btn-ghost {
     border: 1px solid rgba(255,255,255,0.18);
     color: #fff;
-    font-weight: 500;
-    padding: 0.95rem 1.6rem;
-    border-radius: 9999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all .2s ease;
     background: rgba(255,255,255,0.02);
   }
   .btn-ghost:hover {
     border-color: var(--yellow);
     color: var(--yellow);
+  }
+  .btn-flip-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn-yellow:hover .btn-flip-content,
+  .btn-ghost:hover .btn-flip-content {
+    transform: translateY(-150%) rotateX(90deg);
+    opacity: 0;
+  }
+  .btn-flip-hidden {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transform: translateY(150%) rotateX(-90deg);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn-yellow:hover .btn-flip-hidden,
+  .btn-ghost:hover .btn-flip-hidden {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
   }
   .chip {
     display: inline-flex;

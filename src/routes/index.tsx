@@ -145,18 +145,8 @@ function useReveal() {
         });
       });
 
-      // Magnetic Buttons
-      gsap.utils.toArray<HTMLElement>(".btn-yellow, .btn-ghost").forEach((btn) => {
-        btn.addEventListener("mousemove", (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
-        });
-        btn.addEventListener("mouseleave", () => {
-          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-        });
-      });
+      // Removed magnetic button movement as requested
+      // The animation is now handled via CSS classes for the flip effect.
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -186,7 +176,8 @@ function Nav() {
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
         <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
-          Criar conta <ArrowRight className="w-4 h-4" />
+          <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
+          <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
         </a>
       </div>
     </header>
@@ -237,14 +228,16 @@ function Hero() {
           href="#cta" 
           className={`btn-yellow w-full sm:w-[320px] justify-center shadow-2xl ${isSpotlight ? 'bg-black text-yellow border-black' : ''}`}
         >
-          Criar minha conta grátis <ArrowRight className="w-4 h-4" />
+          <span className="btn-flip-content">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>
+          <span className="btn-flip-hidden">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>
         </a>
         <a 
           data-hero-cta 
           href="#como" 
           className={`btn-ghost w-full sm:w-[320px] justify-center ${isSpotlight ? 'border-black/20 text-black hover:bg-black/5' : ''}`}
         >
-          Ver como funciona
+          <span className="btn-flip-content">Ver como funciona</span>
+          <span className="btn-flip-hidden">Ver como funciona</span>
         </a>
       </div>
     </div>
@@ -563,7 +556,8 @@ function HowItWorks() {
           <div className="relative z-10 text-center">
             <h3 className="font-display text-5xl md:text-7xl font-bold mb-8">Pronto para começar?</h3>
             <a href="#cta" className="btn-yellow text-2xl !px-16 !py-8">
-              Quero começar agora <ArrowRight className="w-8 h-8" />
+              <span className="btn-flip-content">Quero começar agora <ArrowRight className="w-8 h-8" /></span>
+              <span className="btn-flip-hidden">Quero começar agora <ArrowRight className="w-8 h-8" /></span>
             </a>
           </div>
         </div>
@@ -864,12 +858,11 @@ function FinalCTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
           <a 
             href="#" 
-            className="group relative px-8 py-4 bg-yellow text-black font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(254,255,0,0.3)]"
+            className="btn-yellow text-lg !px-10 !py-5"
             data-interactive
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Criar conta gratuita <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
+            <span className="btn-flip-content">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
+            <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
           </a>
           <a 
             href="#" 

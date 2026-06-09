@@ -270,7 +270,7 @@ function Hero() {
         }}
       >
         <div className="relative max-w-7xl mx-auto px-6 pt-32 h-full">
-          <HeroContent className="text-black" />
+          <HeroContent className="text-black" isSpotlight={true} />
         </div>
       </div>
       <div className="relative max-w-7xl mx-auto px-6 z-30">

@@ -213,6 +213,25 @@
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  .hero-shine {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 35%,
+      #FEFF00 50%,
+      #ffffff 65%,
+      #ffffff 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: hero-shine 3.5s linear infinite;
+  }
+  @keyframes hero-shine {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
   .btn-yellow {
     cursor: pointer;

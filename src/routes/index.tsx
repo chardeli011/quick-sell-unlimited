@@ -829,55 +829,69 @@ function FAQ() {
 function FinalCTA() {
   return (
     <section id="cta" className="py-40 relative overflow-hidden bg-black">
-      {/* Refined Grid Background */}
-      <div className="absolute inset-0 grid-bg opacity-[0.15]" />
-      
-      {/* Subtle Radial Glow */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-[100%] pointer-events-none opacity-20"
-        style={{
-          background: 'radial-gradient(circle, rgba(254, 255, 0, 0.15) 0%, transparent 70%)',
-          filter: 'blur(100px)'
-        }}
-      />
+      {/* Background Gradients */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-yellow/20 rounded-[100%] blur-[120px] opacity-30" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-yellow/10 rounded-[100%] blur-[100px] opacity-20 animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-yellow/10 rounded-[100%] blur-[100px] opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
 
-      <div className="relative max-w-4xl mx-auto px-6 text-center z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-white/60 text-xs font-medium mb-8 backdrop-blur-sm" data-reveal>
-          <Zap className="w-3 h-3 text-yellow" />
-          <span>Plataforma pronta em minutos</span>
-        </div>
-        
-        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8" data-reveal>
-          Pronto para começar?
-        </h2>
-        
-        <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-12 font-medium leading-relaxed" data-reveal>
-          Crie sua conta, receba pagamentos globais e escale sua operação com a Quik.
-        </p>
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
+        <div className="bg-white/[0.03] border border-white/10 rounded-[3rem] p-12 md:p-24 backdrop-blur-xl relative overflow-hidden group">
+          {/* Inner Glow and Grid */}
+          <div className="absolute inset-0 grid-bg opacity-[0.05]" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-yellow/10 rounded-full blur-[80px]" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-yellow/10 rounded-full blur-[80px]" />
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
-          <a 
-            href="#" 
-            className="btn-yellow text-lg !px-10 !py-5"
-            data-interactive
-          >
-            <span className="btn-flip-content">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
-            <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
-          </a>
-          <a 
-            href="#" 
-            className="text-white/40 hover:text-white transition-colors duration-300 font-medium border-b border-transparent hover:border-white/20 pb-1"
-            data-interactive
-          >
-            Falar com um especialista
-          </a>
-        </div>
-        
-        <div className="mt-16 flex items-center justify-center gap-8 opacity-20 grayscale" data-reveal>
-           {/* Particles or subtle tech details could go here, but keeping it clean for premium feel */}
-           <div className="w-1 h-1 rounded-full bg-white" />
-           <div className="w-1 h-1 rounded-full bg-white" />
-           <div className="w-1 h-1 rounded-full bg-white" />
+          <div className="relative max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow/10 border border-yellow/20 text-yellow text-sm font-semibold mb-8" data-reveal>
+              <Zap className="w-4 h-4 fill-yellow" />
+              <span>Plataforma pronta em 5 minutos</span>
+            </div>
+            
+            <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]" data-reveal>
+              Pronto para <span className="text-yellow">começar?</span>
+            </h2>
+            
+            <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 font-medium leading-relaxed" data-reveal>
+              Junte-se a milhares de produtores que escalaram suas operações com a Quik. 
+              Sem taxas de adesão, sem burocracia.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
+              <a 
+                href="#" 
+                className="btn-yellow text-xl !px-12 !py-6 w-full sm:w-auto shadow-[0_0_30px_rgba(254,255,0,0.3)] hover:shadow-[0_0_50px_rgba(254,255,0,0.5)] transition-all duration-500"
+                data-interactive
+              >
+                <span className="btn-flip-content">Criar conta agora <ArrowRight className="ml-2 w-6 h-6" /></span>
+                <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="ml-2 w-6 h-6" /></span>
+              </a>
+              <a 
+                href="#" 
+                className="text-white/60 hover:text-white transition-all duration-300 font-semibold text-lg flex items-center gap-2 group/link"
+                data-interactive
+              >
+                Falar com um especialista
+                <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              </a>
+            </div>
+
+            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-40" data-reveal>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-yellow" />
+                <span className="text-sm font-medium">Sem mensalidade</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-yellow" />
+                <span className="text-sm font-medium">Aprovação imediata</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-yellow" />
+                <span className="text-sm font-medium">Pix na hora</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

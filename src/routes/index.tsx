@@ -120,7 +120,7 @@ function Nav() {
           <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Preços</a>
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
-        <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5">
+        <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
           Criar conta <ArrowRight className="w-4 h-4" />
         </a>
       </div>
@@ -169,10 +169,10 @@ function Hero() {
             rápida e segura do primeiro produto ao primeiro milhão.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[280px]">
+            <a data-hero-cta href="#cta" className="btn-yellow w-full sm:w-[320px] justify-center">
               Criar minha conta grátis <ArrowRight className="w-4 h-4" />
             </a>
-            <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[280px]">
+            <a data-hero-cta href="#como" className="btn-ghost w-full sm:w-[320px] justify-center">
               Ver como funciona
             </a>
           </div>

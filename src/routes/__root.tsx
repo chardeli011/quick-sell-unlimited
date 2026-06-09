@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "q" },
+      { name: "description", content: "Quik Launchpad is a digital sales platform for infoproducts, enabling users to sell more, receive payments instantly, and scale their businesses." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "q" },
+      { property: "og:description", content: "Quik Launchpad is a digital sales platform for infoproducts, enabling users to sell more, receive payments instantly, and scale their businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "q" },
+      { name: "twitter:description", content: "Quik Launchpad is a digital sales platform for infoproducts, enabling users to sell more, receive payments instantly, and scale their businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/718af697-b7e8-428f-990a-7e83c38dc11f/id-preview-63941aa0--f4ca4391-4908-48ac-9638-4bfa22920433.lovable.app-1780978575770.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/718af697-b7e8-428f-990a-7e83c38dc11f/id-preview-63941aa0--f4ca4391-4908-48ac-9638-4bfa22920433.lovable.app-1780978575770.png" },
     ],
     links: [
       {

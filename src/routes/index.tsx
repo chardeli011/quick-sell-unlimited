@@ -494,22 +494,22 @@ function GatewayAwards() {
     {
       title: "Plataforma Revelação 2024",
       org: "InfoCommerce Awards",
-      img: "https://images.unsplash.com/photo-1579546678183-a84fe5351ad3?auto=format&fit=crop&q=80&w=400&h=400",
+      img: "/awards/award1.png",
     },
     {
       title: "Melhor Gateway",
       org: "Summit Digital Brasil",
-      img: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80&w=400&h=400",
+      img: "/awards/award2.png",
     },
     {
       title: "Top 3 Plataformas",
       org: "Ranking Mercado Digital",
-      img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=400&h=400",
+      img: "/awards/award3.png",
     },
     {
       title: "Startup de Alto Impacto",
       org: "Aceleração Tech BR",
-      img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400&h=400",
+      img: "/awards/award4.png",
     },
   ];
 

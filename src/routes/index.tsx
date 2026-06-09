@@ -203,11 +203,12 @@ function Hero() {
 
       // Spotlight interaction
       const handleMouseMove = (e: MouseEvent) => {
-        if (!spotlightRef.current) return;
-        const { clientX, clientY } = e;
+        if (!spotlightRef.current || !heroRef.current) return;
+        const rect = heroRef.current.getBoundingClientRect();
+        const x = e.clientX;
+        const y = e.clientY - rect.top;
         gsap.to(spotlightRef.current, {
-          x: clientX,
-          y: clientY,
+          clipPath: `circle(150px at ${x}px ${y}px)`,
           duration: 0.3,
           ease: "power2.out"
         });
@@ -254,9 +255,9 @@ function Hero() {
       {/* Spotlight Layer (Yellow Background + Black Text) */}
       <div 
         ref={spotlightRef}
-        className="fixed inset-0 pointer-events-none z-20"
+        className="absolute inset-0 pointer-events-none z-20"
         style={{
-          clipPath: 'circle(150px at -100% -100%)',
+          clipPath: 'circle(0px at 50% 50%)',
           backgroundColor: '#FFD700',
         }}
       >
@@ -265,13 +266,8 @@ function Hero() {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        .group\\/hero:hover div[ref="spotlightRef"] {
-          /* This is handled by GSAP, but we need the clip-path to exist */
-        }
-      `}} />
-
       <div className="relative max-w-7xl mx-auto px-6 z-30">
+        <div
           data-hero-visual
           className="relative mt-20 mx-auto w-full max-w-none overflow-visible flex justify-center"
         >

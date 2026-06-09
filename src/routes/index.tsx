@@ -584,7 +584,9 @@ function GatewayAwards() {
         {awards.map((award, i) => (
           <div
             key={i}
-            ref={(el) => (itemsRef.current[i] = el!)}
+            ref={(el) => {
+              if (el) itemsRef.current[i] = el;
+            }}
             className="absolute inset-0 flex flex-col items-center justify-center p-8"
             style={{ transformStyle: "preserve-3d" }}
           >

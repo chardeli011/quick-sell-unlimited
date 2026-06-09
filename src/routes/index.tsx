@@ -391,38 +391,72 @@ function Awards() {
   );
 }
 
-function Testimonials() {
-  const items = [
-    { q: "Migrei pra Quik há 3 meses e minha taxa de aprovação subiu 18%. Simples assim.", a: "Lucas M.", r: "Produtor digital · R$ 200k/mês" },
-    { q: "Passei anos pagando taxa absurda em outra plataforma. Na Quik, configurei tudo em menos de 10 minutos e já estava vendendo.", a: "Fernanda R.", r: "Mentora de negócios" },
-    { q: "O suporte da Quik salvou meu lançamento numa sexta à noite. Isso não tem preço.", a: "Rodrigo T.", r: "Especialista em tráfego" },
+function NextSteps() {
+  const steps = [
+    { 
+      t: "Infraestrutura escalável", 
+      d: "Tecnologia de ponta pronta para suportar picos de tráfego extremos em lançamentos.",
+      img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
+    },
+    { 
+      t: "Conversão otimizada", 
+      d: "Checkouts testados e validados para garantir a menor fricção e a maior conversão.",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+    },
+    { 
+      t: "Ecossistema completo", 
+      d: "Todas as ferramentas que você precisa em um só lugar, integradas e prontas para usar.",
+      img: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop"
+    },
+    { 
+      t: "Dados em tempo real", 
+      d: "Analytics profundo para você tomar decisões baseadas em números, não em achismos.",
+      img: "https://images.unsplash.com/photo-1551288049-bbdac8a28a1e?q=80&w=800&auto=format&fit=crop"
+    },
   ];
+
   return (
-    <section className="py-32">
+    <section className="py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="font-display text-4xl md:text-6xl font-bold max-w-3xl" data-reveal>
-          Quem usou, <span className="text-yellow">não volta</span> pra outra.
+        <h2 className="font-display text-4xl md:text-6xl font-bold max-w-4xl mb-20" data-reveal>
+          Seu próximo passo no digital acontece aqui. <span className="text-yellow">E o próximo. E o próximo…</span>
         </h2>
-        <div className="mt-16 grid md:grid-cols-3 gap-6" data-stagger>
-          {items.map((t) => (
-              <div key={t.a} data-interactive className="p-8 rounded-2xl border border-white/10 bg-[color:var(--surface)] flex flex-col group hover:border-yellow/30 transition-all duration-500">
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow text-yellow" />
-                  ))}
-                </div>
-                <p className="text-lg leading-relaxed text-white/85 flex-1 group-hover:text-white transition-colors">"{t.q}"</p>
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <div className="font-semibold">{t.a}</div>
-                  <div className="text-sm text-white/50">{t.r}</div>
-                </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {steps.map((step, i) => (
+            <div 
+              key={i} 
+              data-reveal
+              className="group relative h-[450px] rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-out hover:flex-[1.5] flex-1 bg-[color:var(--surface)] border border-white/10"
+            >
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src={step.img} 
+                  alt={step.t}
+                  className="w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               </div>
+              
+              <div className="relative z-10 h-full p-8 flex flex-col justify-end">
+                <div className="mb-4 w-10 h-10 rounded-full bg-yellow text-black flex items-center justify-center font-bold text-sm">
+                  0{i + 1}
+                </div>
+                <h3 className="font-display text-2xl font-bold mb-3 group-hover:text-yellow transition-colors duration-300">
+                  {step.t}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                  {step.d}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 function HowItWorks() {
   const steps = [
@@ -927,7 +961,7 @@ function QuikLanding() {
         <Stats />
         <WhyQuik />
         <Awards />
-        <Testimonials />
+        <NextSteps />
         <HowItWorks />
         <GatewayAwards />
         <Pricing />

@@ -61,6 +61,7 @@ function useReveal() {
 
       // Typewriter Effect for all Titles
       gsap.utils.toArray<HTMLElement>("h1, h2, h3").forEach((title) => {
+        if (title.hasAttribute("data-no-typewriter")) return;
         // Skip titles in the specialized scroll sections if they already have custom animations
         // but we'll apply it widely first.
         const text = title.textContent || "";

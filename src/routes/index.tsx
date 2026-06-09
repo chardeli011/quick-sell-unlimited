@@ -288,7 +288,7 @@ function Awards() {
           Reconhecimento de quem <span className="text-yellow">entende</span> do mercado
         </h2>
         <p className="mt-4 text-white/60 max-w-2xl mx-auto" data-reveal>
-          A Quik não é só mais uma plataforma — é a escolha de quem já chegou lá.
+          A Quik não é só mais uma plataforma é a escolha de quem já chegou lá.
         </p>
       </div>
       <div className="relative">

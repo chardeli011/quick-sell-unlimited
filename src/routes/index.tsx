@@ -961,7 +961,7 @@ function QuikLanding() {
         <Stats />
         <WhyQuik />
         <Awards />
-        <Testimonials />
+        <NextSteps />
         <HowItWorks />
         <GatewayAwards />
         <Pricing />

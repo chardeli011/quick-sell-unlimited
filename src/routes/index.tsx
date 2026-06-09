@@ -45,12 +45,47 @@ function useReveal() {
     const ctx = gsap.context(() => {
       // General Reveal
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+        // Skip elements that are part of titles (h1, h2, h3) to avoid conflicts with typewriter effect
+        if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') {
+          return;
+        }
+        
         gsap.from(el, {
           y: 40,
           opacity: 0,
           duration: 0.9,
           ease: "power4.out",
           scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
+
+      // Typewriter Effect for all Titles
+      gsap.utils.toArray<HTMLElement>("h1, h2, h3").forEach((title) => {
+        // Skip titles in the specialized scroll sections if they already have custom animations
+        // but we'll apply it widely first.
+        const text = title.textContent || "";
+        title.innerHTML = "";
+        
+        const chars = text.split("");
+        chars.forEach(char => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.opacity = "0";
+          span.style.display = "inline-block";
+          if (char === " ") span.style.width = "0.25em";
+          title.appendChild(span);
+        });
+
+        gsap.to(title.querySelectorAll("span"), {
+          opacity: 1,
+          stagger: 0.03,
+          duration: 0.05,
+          ease: "none",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          }
         });
       });
 

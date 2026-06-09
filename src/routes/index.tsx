@@ -209,25 +209,34 @@ function Hero() {
         <div
           data-hero-visual
           data-interactive
-          className="relative mt-20 mx-auto max-w-5xl aspect-[16/9] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent overflow-hidden glow-yellow group perspective-1000"
+          className="relative mt-20 mx-auto max-w-5xl aspect-[16/9] rounded-2xl border border-white/10 bg-black overflow-hidden glow-yellow group perspective-1000"
         >
-          <div className="absolute inset-0 grid-bg opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+          >
+            <source src="/formula1.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
           <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-            <div className="text-center">
-              <div className="font-display text-7xl md:text-9xl font-bold text-yellow leading-none">
+            <div className="text-center relative z-10">
+              <div className="font-display text-7xl md:text-9xl font-bold text-yellow leading-none drop-shadow-2xl">
                 R$ 1.284<span className="text-white">,90</span>
               </div>
-              <div className="mt-3 text-sm text-white/50 tracking-widest uppercase">
+              <div className="mt-3 text-sm text-white/90 tracking-widest uppercase font-bold drop-shadow-md">
                 Pix recebido · há 2 segundos
               </div>
             </div>
           </div>
-          <div className="absolute top-6 left-6 flex gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-white/20" />
-            <span className="w-3 h-3 rounded-full bg-white/20" />
+          <div className="absolute top-6 left-6 flex gap-1.5 z-10">
+            <span className="w-3 h-3 rounded-full bg-white/40" />
+            <span className="w-3 h-3 rounded-full bg-white/40" />
             <span className="w-3 h-3 rounded-full bg-yellow" />
           </div>
-          <div className="absolute bottom-6 right-6 text-xs text-white/40 font-mono">dashboard.quik.com</div>
+          <div className="absolute bottom-6 right-6 text-xs text-white/60 font-mono z-10">dashboard.quik.com</div>
         </div>
       </div>
     </section>

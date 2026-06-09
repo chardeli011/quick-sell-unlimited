@@ -201,24 +201,10 @@ function Hero() {
         scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
       });
 
-      // Spotlight interaction
-      const handleMouseMove = (e: MouseEvent) => {
-        if (!spotlightRef.current || !heroRef.current) return;
-        const rect = heroRef.current.getBoundingClientRect();
-        const x = e.clientX;
-        const y = e.clientY - rect.top;
-        gsap.to(spotlightRef.current, {
-          clipPath: `circle(150px at ${x}px ${y}px)`,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, heroRef);
     return () => ctx.revert();
   }, []);
+
 
   const HeroContent = ({ className = "", isSpotlight = false }: { className?: string, isSpotlight?: boolean }) => (
     <div className={`text-center max-w-4xl mx-auto ${className}`}>
@@ -260,19 +246,8 @@ function Hero() {
         <HeroContent className="text-white" />
       </div>
 
-      {/* Spotlight Layer (Yellow Background + Black Text) */}
-      <div 
-        ref={spotlightRef}
-        className="absolute inset-0 pointer-events-none z-20"
-        style={{
-          clipPath: 'circle(0px at 50% 50%)',
-          backgroundColor: '#FFD700',
-        }}
-      >
-        <div className="relative max-w-7xl mx-auto px-6 pt-32 h-full">
-          <HeroContent className="text-black" isSpotlight={true} />
-        </div>
-      </div>
+
+
       <div className="relative max-w-7xl mx-auto px-6 z-30">
         <div
           data-hero-visual

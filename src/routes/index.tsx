@@ -221,8 +221,10 @@ function Hero() {
       <span data-hero-chip className={`chip mb-8 ${isSpotlight ? 'border-black/20 text-black/80' : ''}`}>
         <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
       </span>
-      <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]">
-        Venda mais. Receba na hora. Escale sem limite.
+      <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight">
+        <span className="block">Venda mais.</span>
+        <span className="block">Receba na hora.</span>
+        <span className="block hero-shine">Escale sem limite.</span>
       </h1>
       <p data-hero-sub className={`mt-8 text-lg md:text-xl max-w-2xl mx-auto ${isSpotlight ? 'text-black/70' : 'opacity-65'}`}>
         A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,

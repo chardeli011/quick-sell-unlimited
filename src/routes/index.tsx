@@ -520,6 +520,34 @@ function GatewayAwards() {
       const items = itemsRef.current;
       const totalSteps = items.length;
       
+      // Text writing animation
+      const title = containerRef.current?.querySelector(".awards-title");
+      if (title) {
+        const text = title.textContent || "";
+        title.textContent = "";
+        
+        const chars = text.split("");
+        chars.forEach(char => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.opacity = "0";
+          span.style.display = "inline-block";
+          title.appendChild(span);
+        });
+
+        gsap.to(title.querySelectorAll("span"), {
+          opacity: 1,
+          stagger: 0.05,
+          duration: 0.1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 20%",
+            toggleActions: "play none none reverse",
+          }
+        });
+      }
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -571,8 +599,8 @@ function GatewayAwards() {
       {/* Header - Fixed during the section scroll */}
       <div className="relative z-20 text-center mb-12 pointer-events-none">
         <span className="chip mb-4 inline-block" data-reveal>Reconhecimento</span>
-        <h2 className="font-display text-4xl md:text-6xl font-bold text-white">
-          Premiações do <span className="text-yellow">Gateway</span>
+        <h2 className="awards-title font-display text-4xl md:text-6xl font-bold text-white">
+          Premiações Exclusivas
         </h2>
         <p className="mt-4 text-white/50 max-w-xl mx-auto text-sm md:text-base px-6">
           A excelência tecnológica e o compromisso com resultados nos tornaram a plataforma mais premiada do mercado digital brasileiro.

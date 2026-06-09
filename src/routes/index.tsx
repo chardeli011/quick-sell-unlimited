@@ -864,9 +864,6 @@ function FinalCTA() {
             <span className="btn-flip-content">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
             <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="w-5 h-5" /></span>
           </a>
-              Criar conta gratuita <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
-          </a>
           <a 
             href="#" 
             className="text-white/40 hover:text-white transition-colors duration-300 font-medium border-b border-transparent hover:border-white/20 pb-1"

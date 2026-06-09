@@ -201,21 +201,8 @@ function Hero() {
         scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
       });
 
-      // Spotlight interaction
-      const handleMouseMove = (e: MouseEvent) => {
-        if (!spotlightRef.current || !heroRef.current) return;
-        const rect = heroRef.current.getBoundingClientRect();
-        const x = e.clientX;
-        const y = e.clientY - rect.top;
-        gsap.to(spotlightRef.current, {
-          clipPath: `circle(150px at ${x}px ${y}px)`,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      };
+    }, heroRef);
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, heroRef);
     return () => ctx.revert();
   }, []);

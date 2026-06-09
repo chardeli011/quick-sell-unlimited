@@ -899,13 +899,6 @@ function FinalCTA() {
     </section>
   );
 }
-        <p className="mt-6 text-sm text-white/45" data-reveal>
-          🔒 Sem cartão de crédito · Configuração em 5 minutos · Suporte humano incluído
-        </p>
-      </div>
-    </section>
-  );
-}
 
 function Footer() {
   return (

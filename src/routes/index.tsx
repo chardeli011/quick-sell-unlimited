@@ -134,11 +134,11 @@ function Hero() {
     if (isServer) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from("[data-hero-chip]", { y: 20, opacity: 0, duration: 0.6 })
-        .from("[data-hero-title] span", { y: 80, opacity: 0, duration: 1, stagger: 0.08 }, "-=0.2")
-        .from("[data-hero-sub]", { y: 20, opacity: 0, duration: 0.7 }, "-=0.5")
-        .from("[data-hero-cta]", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
-        .from("[data-hero-visual]", { scale: 0.9, opacity: 0, duration: 1.1 }, "-=0.7");
+      tl.from("[data-hero-chip]", { y: 20, opacity: 0, duration: 0.6, clearProps: "all" })
+        .from("[data-hero-title] span", { y: 80, opacity: 0, duration: 1, stagger: 0.08, clearProps: "all" }, "-=0.2")
+        .from("[data-hero-sub]", { y: 20, opacity: 0, duration: 0.7, clearProps: "all" }, "-=0.5")
+        .from("[data-hero-cta]", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, clearProps: "all" }, "-=0.4")
+        .from("[data-hero-visual]", { scale: 0.9, opacity: 0, duration: 1.1, clearProps: "all" }, "-=0.7");
 
       gsap.to("[data-hero-bg]", {
         yPercent: 30,

@@ -114,6 +114,15 @@ function useReveal() {
 
       // Stagger
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((el, i) => {
+        gsap.from(el, {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          delay: i * 0.08,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
 
       // Interactive Hover Effects (everything with data-interactive)
       gsap.utils.toArray<HTMLElement>("[data-interactive]").forEach((el) => {

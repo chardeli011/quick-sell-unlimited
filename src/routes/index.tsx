@@ -239,8 +239,10 @@ function Hero() {
 
   return (
     <section ref={heroRef} className="relative pt-32 pb-24 overflow-hidden group/hero">
-      <div className="hero-aurora" aria-hidden="true" />
-      <div data-hero-bg className="absolute inset-0 grid-bg-animated opacity-80" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-[640px] pointer-events-none [mask-image:linear-gradient(to_bottom,black_0%,black_60%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_60%,transparent_100%)]" aria-hidden="true">
+        <div className="hero-aurora" />
+        <div data-hero-bg className="absolute inset-0 grid-bg-animated opacity-80" />
+      </div>
       
       {/* Background Hero Content (White Text) */}
       <div className="relative max-w-7xl mx-auto px-6 z-10">

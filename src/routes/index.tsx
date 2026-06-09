@@ -231,7 +231,7 @@ function WhyQuik() {
   const cards = [
     { icon: Wallet, t: "Aprovação máxima", d: "Nosso motor antifraude aprova mais vendas sem abrir mão da segurança. Menos recusa, mais dinheiro no seu bolso." },
     { icon: Zap, t: "Pagamento instantâneo", d: "Receba via Pix em segundos. Seu saldo disponível imediatamente, sem esperar dias ou semanas." },
-    { icon: ShoppingCart, t: "Checkout que converte", d: "Checkout otimizado para mobile, com um clique e sem fricção. Menos abandono, mais conversão — garantido." },
+    { icon: ShoppingCart, t: "Checkout que converte", d: "Checkout otimizado para mobile, com um clique e sem fricção. Menos abandono, mais conversão garantido." },
     { icon: ShieldCheck, t: "Segurança de verdade", d: "Infraestrutura com criptografia de ponta, certificação PCI DSS e antifraude inteligente. Você vende, nós protegemos." },
     { icon: LineChart, t: "Dashboard em tempo real", d: "Acompanhe cada venda, cada clique e cada conversão no momento em que acontece. Sem atraso, sem achismo." },
     { icon: Headphones, t: "Suporte que resolve", d: "Time humano, disponível, que responde de verdade. Porque problema com dinheiro não pode esperar." },

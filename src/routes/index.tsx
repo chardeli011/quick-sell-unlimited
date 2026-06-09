@@ -486,6 +486,139 @@ function HowItWorks() {
 }
 
 
+function GatewayAwards() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLDivElement[]>([]);
+  
+  const awards = [
+    {
+      title: "Plataforma Revelação 2024",
+      org: "InfoCommerce Awards",
+      img: "https://images.unsplash.com/photo-1579546678183-a84fe5351ad3?auto=format&fit=crop&q=80&w=400&h=400",
+    },
+    {
+      title: "Melhor Gateway",
+      org: "Summit Digital Brasil",
+      img: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80&w=400&h=400",
+    },
+    {
+      title: "Top 3 Plataformas",
+      org: "Ranking Mercado Digital",
+      img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=400&h=400",
+    },
+    {
+      title: "Startup de Alto Impacto",
+      org: "Aceleração Tech BR",
+      img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400&h=400",
+    },
+  ];
+
+  useEffect(() => {
+    if (isServer || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const items = itemsRef.current;
+      const totalSteps = items.length;
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: `+=${totalSteps * 100}%`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
+
+      items.forEach((item, i) => {
+        // Reset states
+        gsap.set(item, { scale: 0.5, opacity: 0, z: -500, filter: "blur(10px)" });
+
+        // Animation sequence
+        tl.to(item, {
+          scale: 1,
+          opacity: 1,
+          z: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: "power2.inOut",
+        })
+        .to(item, {
+          scale: 1.5,
+          opacity: 0,
+          z: 500,
+          filter: "blur(20px)",
+          duration: 1,
+          ease: "power2.inOut",
+        }, "+=0.5");
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      ref={containerRef} 
+      className="relative h-screen bg-black overflow-hidden flex flex-col items-center justify-center"
+    >
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+      
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-yellow/5 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* Header - Fixed during the section scroll */}
+      <div className="relative z-20 text-center mb-12 pointer-events-none">
+        <span className="chip mb-4 inline-block" data-reveal>Reconhecimento</span>
+        <h2 className="font-display text-4xl md:text-6xl font-bold text-white">
+          Premiações do <span className="text-yellow">Gateway</span>
+        </h2>
+        <p className="mt-4 text-white/50 max-w-xl mx-auto text-sm md:text-base px-6">
+          A excelência tecnológica e o compromisso com resultados nos tornaram a plataforma mais premiada do mercado digital brasileiro.
+        </p>
+      </div>
+
+      {/* Awards Showcase Area */}
+      <div className="relative w-full max-w-4xl aspect-video md:aspect-square flex items-center justify-center perspective-2000">
+        {awards.map((award, i) => (
+          <div
+            key={i}
+            ref={(el) => (itemsRef.current[i] = el!)}
+            className="absolute inset-0 flex flex-col items-center justify-center p-8"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="relative group">
+              {/* Outer Glow */}
+              <div className="absolute inset-0 bg-yellow/20 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
+              
+              {/* Image Container */}
+              <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-3xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl shadow-yellow/10">
+                <img 
+                  src={award.img} 
+                  alt={award.title}
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              </div>
+            </div>
+
+            {/* Award Info */}
+            <div className="mt-8 text-center" style={{ transform: "translateZ(50px)" }}>
+              <div className="text-yellow font-display text-2xl md:text-4xl font-bold mb-2">
+                {award.title}
+              </div>
+              <div className="text-white/60 text-lg md:text-xl font-medium tracking-wide">
+                {award.org}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
     <section id="precos" className="py-32">
@@ -677,6 +810,7 @@ function QuikLanding() {
         <Awards />
         <Testimonials />
         <HowItWorks />
+        <GatewayAwards />
         <Pricing />
         <Security />
         <FAQ />

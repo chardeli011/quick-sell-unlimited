@@ -145,18 +145,8 @@ function useReveal() {
         });
       });
 
-      // Magnetic Buttons
-      gsap.utils.toArray<HTMLElement>(".btn-yellow, .btn-ghost").forEach((btn) => {
-        btn.addEventListener("mousemove", (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
-        });
-        btn.addEventListener("mouseleave", () => {
-          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-        });
-      });
+      // Removed magnetic button movement as requested
+      // The animation is now handled via CSS classes for the flip effect.
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -186,7 +176,8 @@ function Nav() {
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
         <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
-          Criar conta <ArrowRight className="w-4 h-4" />
+          <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
+          <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
         </a>
       </div>
     </header>
@@ -237,14 +228,16 @@ function Hero() {
           href="#cta" 
           className={`btn-yellow w-full sm:w-[320px] justify-center shadow-2xl ${isSpotlight ? 'bg-black text-yellow border-black' : ''}`}
         >
-          Criar minha conta grátis <ArrowRight className="w-4 h-4" />
+          <span className="btn-flip-content">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>
+          <span className="btn-flip-hidden">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>
         </a>
         <a 
           data-hero-cta 
           href="#como" 
           className={`btn-ghost w-full sm:w-[320px] justify-center ${isSpotlight ? 'border-black/20 text-black hover:bg-black/5' : ''}`}
         >
-          Ver como funciona
+          <span className="btn-flip-content">Ver como funciona</span>
+          <span className="btn-flip-hidden">Ver como funciona</span>
         </a>
       </div>
     </div>

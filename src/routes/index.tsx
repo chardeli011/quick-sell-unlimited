@@ -1126,9 +1126,9 @@ function Footer() {
                 <a 
                   key={link.label}
                   href={link.href} 
-                  className="text-white/50 hover:text-yellow text-sm transition-all duration-300 flex items-center group"
+                  className="text-white/50 hover:text-yellow text-sm transition-all duration-300 flex items-center group/footerlink"
                 >
-                  <span className="w-0 group-hover:w-2 h-px bg-yellow mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  <ArrowRight className="w-3 h-3 text-yellow mr-2 opacity-50 group-hover/footerlink:opacity-100 transition-opacity" />
                   {link.label}
                 </a>
               ))}

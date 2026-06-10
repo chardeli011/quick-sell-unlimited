@@ -4,17 +4,15 @@ import tailwindcss from '@tailwindcss/vite';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { lovableTagger } from "lovable-tagger";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [
     TanStackRouterVite(),
     tanstackStart(),
     react(),
     tailwindcss(),
     tsconfigPaths(),
-    mode === 'development' && lovableTagger(),
-  ].filter(Boolean),
+  ],
   server: {
     host: "::",
     port: 8080,
@@ -24,4 +22,4 @@ export default defineConfig(({ mode }) => ({
       "@": "/src",
     },
   },
-}));
+});

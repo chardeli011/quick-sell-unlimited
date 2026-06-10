@@ -521,7 +521,7 @@ function HowItWorks() {
       });
 
       tl.to(horizontalSection, {
-        x: () => -(totalWidth — window.innerWidth),
+        x: () => -(totalWidth - window.innerWidth),
         ease: "none"
       });
 
@@ -1223,6 +1223,9 @@ function QuikLanding() {
         <FinalCTA />
       </main>
       <Footer />
+      {process.env.NODE_ENV === 'development' && (
+        <div id="lovable-tagger" />
+      )}
     </div>
   );
 }

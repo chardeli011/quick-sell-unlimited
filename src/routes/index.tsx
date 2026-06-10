@@ -903,17 +903,20 @@ function LaptopDashboard() {
         }
       });
 
-      tl.to(lidRef.current, {
-        rotateX: -105,
-        ease: "none",
-        onUpdate: function() {
-          const p = this.progress();
-          setProgress(p);
-          if (p > 0.8) setPhase('dashboard');
-          else if (p > 0.3) setPhase('loading');
-          else setPhase('login');
+      tl.fromTo(lidRef.current, 
+        { rotateX: 0 },
+        {
+          rotateX: -110,
+          ease: "none",
+          onUpdate: function() {
+            const p = this.progress();
+            setProgress(p);
+            if (p > 0.8) setPhase('dashboard');
+            else if (p > 0.3) setPhase('loading');
+            else setPhase('login');
+          }
         }
-      });
+      );
 
       gsap.to(".light-bloom", {
         opacity: 0.4,

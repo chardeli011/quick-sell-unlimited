@@ -896,7 +896,7 @@ function LaptopDashboard() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=200%",
+          end: "+=150%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,

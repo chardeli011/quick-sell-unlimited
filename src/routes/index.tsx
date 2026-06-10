@@ -795,11 +795,17 @@ function Security() {
         </div>
         <div className="grid sm:grid-cols-2 gap-4" data-stagger>
           {items.map((i) => (
-            <div key={i} className="flex items-start gap-3 p-5 rounded-xl border border-white/10 bg-black/40">
-              <div className="w-6 h-6 rounded-full bg-yellow flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />
+            <div 
+              key={i} 
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-xl hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-1 transition-all duration-500 cursor-default relative overflow-hidden"
+            >
+              {/* Glass Reflection effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="w-8 h-8 rounded-full bg-yellow/10 flex items-center justify-center shrink-0 group-hover:bg-yellow group-hover:scale-110 group-hover:rotate-[360deg] transition-all duration-700 ease-out border border-yellow/20 group-hover:border-transparent shadow-[0_0_15px_rgba(254,255,0,0)] group-hover:shadow-[0_0_20px_rgba(254,255,0,0.4)]">
+                <Check className="w-4 h-4 text-yellow group-hover:text-black transition-colors duration-500" strokeWidth={3} />
               </div>
-              <span className="text-white/85 font-medium">{i}</span>
+              <span className="text-white/70 group-hover:text-white font-medium transition-colors duration-300 relative z-10">{i}</span>
             </div>
           ))}
         </div>

@@ -895,8 +895,8 @@ function LaptopDashboard() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
-          end: "+=100%", // Scroll distance of 100% of the viewport height
+          start: "top top",
+          end: "+=200%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -904,14 +904,14 @@ function LaptopDashboard() {
       });
 
       tl.to(lidRef.current, {
-        rotateX: -110,
+        rotateX: -105,
         ease: "none",
         onUpdate: function() {
           const p = this.progress();
-          if (p > 0.8) setPhase('dashboard');
-          else if (p > 0.4) setPhase('loading');
-          else setPhase('login');
           setProgress(p);
+          if (p > 0.8) setPhase('dashboard');
+          else if (p > 0.3) setPhase('loading');
+          else setPhase('login');
         }
       });
 

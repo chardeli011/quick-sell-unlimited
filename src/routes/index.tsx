@@ -442,8 +442,8 @@ function NextSteps() {
               </div>
 
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-yellow/10 border border-yellow/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-yellow group-hover:border-yellow transition-all duration-500">
-                  <step.icon className="w-8 h-8 text-yellow group-hover:text-black transition-colors duration-500" />
+                <div className="w-16 h-16 rounded-2xl bg-yellow flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-500 shadow-[0_0_20px_rgba(254,255,0,0.2)]">
+                  <step.icon className="w-8 h-8 text-black" />
                 </div>
                 <div className="text-xs font-mono text-yellow/50 tracking-widest uppercase mb-4">Módulo 0{i + 1}</div>
                 <h3 className="font-display text-2xl font-bold mb-4 group-hover:text-yellow transition-colors duration-300">

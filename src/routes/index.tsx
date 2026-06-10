@@ -325,7 +325,9 @@ function WhyQuik() {
     { icon: Headphones, t: "Suporte que resolve", d: "Time humano, disponível, que responde de verdade. Porque problema com dinheiro não pode esperar." },
   ];
   return (
-    <section id="por-que" className="py-32 relative">
+    <section id="por-que" className="py-32 relative overflow-hidden">
+      {/* Dynamic background for section */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-yellow/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-3xl">
           <span className="chip mb-6" data-reveal>Por que a Quik</span>

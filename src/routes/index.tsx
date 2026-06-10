@@ -986,7 +986,8 @@ function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-32">
+    <section id="faq" className="py-32 relative overflow-hidden">
+      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-yellow/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="chip mb-6" data-reveal>FAQ</span>

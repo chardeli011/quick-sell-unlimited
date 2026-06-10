@@ -952,7 +952,11 @@ function LaptopDashboard() {
           <div 
             ref={lidRef}
             className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
-            style={{ transform: 'rotateX(0deg)', transformStyle: 'preserve-3d' }}
+            style={{ 
+              transform: 'rotateX(0deg)', 
+              transformStyle: 'preserve-3d',
+              backfaceVisibility: 'hidden'
+            }}
           >
             <div className="absolute inset-[2%] bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">
               {phase === 'login' && (

@@ -280,6 +280,7 @@ function Hero() {
               loop
               muted
               playsInline
+              title="Quik Gateway de Pagamento em Ação"
               className="w-full h-full object-contain mix-blend-screen opacity-90 transition-opacity duration-700 hover:opacity-100"
             >
               <source src="/formula1.mp4" type="video/mp4" />

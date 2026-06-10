@@ -881,8 +881,6 @@ function RealTimeNotifications() {
     </section>
   );
 }
-
-function Pricing() {
   return (
     <section id="precos" className="py-32">
       <div className="max-w-5xl mx-auto px-6 text-center">

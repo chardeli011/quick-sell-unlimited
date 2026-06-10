@@ -881,6 +881,156 @@ function RealTimeNotifications() {
     </section>
   );
 }
+
+function LaptopDashboard() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lidRef = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<'login' | 'loading' | 'dashboard'>('login');
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (isServer || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+        }
+      });
+
+      tl.to(lidRef.current, {
+        rotateX: -105,
+        duration: 2,
+        ease: "power2.inOut",
+        onUpdate: function() {
+          const p = this.progress();
+          if (p > 0.8) setPhase('dashboard');
+          else if (p > 0.4) setPhase('loading');
+          else setPhase('login');
+          setProgress(p);
+        }
+      });
+
+      gsap.to(".light-bloom", {
+        opacity: 0.4,
+        scale: 1.5,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.8,
+        ease: "sine.inOut"
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="py-40 relative min-h-[150vh] flex flex-col items-center justify-start bg-black overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+      <div className="light-bloom absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
+      <div className="light-bloom absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
+
+      <div className="relative z-10 text-center mb-20 max-w-4xl px-6">
+        <span className="chip mb-6" data-reveal>Tecnologia & Dados</span>
+        <h2 className="font-display text-4xl md:text-6xl font-bold mb-8" data-reveal>
+          Dashboards <span className="text-yellow" data-no-typewriter>Inteligentes</span> para sua escala.
+        </h2>
+        <p className="text-xl text-white/60 leading-relaxed" data-reveal>
+          Tome decisões baseadas em dados reais. Nossa interface foi projetada para alta performance e clareza total.
+        </p>
+      </div>
+
+      <div className="perspective-2000 w-full max-w-[1000px] flex justify-center mt-20 px-10">
+        <div className="relative w-full aspect-[16/10]">
+          <div className="absolute bottom-0 left-0 right-0 h-[3%] bg-[#1a1a1a] rounded-b-xl border-t border-white/10 shadow-2xl z-20" />
+          
+          <div 
+            ref={lidRef}
+            className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom transform-style-3d shadow-2xl z-10"
+            style={{ transform: 'rotateX(0deg)' }}
+          >
+            <div className="absolute inset-[2%] bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">
+              {phase === 'login' && (
+                <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-black/40 backdrop-blur-sm transition-opacity duration-500">
+                  <div className="w-20 h-20 bg-yellow rounded-2xl flex items-center justify-center p-4 mb-6 shadow-[0_0_30px_rgba(254,255,0,0.2)]">
+                    <img src="/logoquik.svg" alt="Quik" className="w-full h-auto brightness-0" onError={(e) => (e.currentTarget.src = "https://i.ibb.co/Vp8p36C/logo-quik.png")} />
+                  </div>
+                  <div className="w-48 h-2 bg-white/10 rounded-full overflow-hidden mb-4">
+                    <div className="h-full bg-yellow transition-all duration-300" style={{ width: `${progress * 250}%` }} />
+                  </div>
+                  <p className="text-yellow font-bold text-sm uppercase tracking-widest animate-pulse">Autenticando...</p>
+                </div>
+              )}
+
+              {phase === 'loading' && (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-[#050505] transition-opacity duration-500">
+                  <div className="relative w-16 h-16 mb-6">
+                    <div className="absolute inset-0 border-4 border-yellow/20 rounded-full" />
+                    <div className="absolute inset-0 border-4 border-t-yellow rounded-full animate-spin" />
+                  </div>
+                  <p className="text-white/60 font-medium">Sincronizando seus dados...</p>
+                </div>
+              )}
+
+              {phase === 'dashboard' && (
+                <div className="w-full h-full bg-[#0a0a0a] p-6 animate-in fade-in zoom-in duration-700">
+                  <div className="flex h-full gap-6">
+                    <div className="w-16 h-full flex flex-col gap-4 border-r border-white/5 pr-4">
+                      {[1,2,3,4].map(i => (
+                        <div key={i} className={`w-10 h-10 rounded-xl flex items-center justify-center ${i===1 ? 'bg-yellow text-black' : 'bg-white/5 text-white/40'}`}>
+                          <div className="w-4 h-4 rounded-full border-2 border-current opacity-50" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex-1 flex flex-col gap-6 overflow-hidden">
+                      <header className="flex justify-between items-center">
+                        <div className="h-6 w-32 bg-white/10 rounded-lg" />
+                        <div className="flex gap-2">
+                           <div className="h-8 w-8 rounded-full bg-white/10" />
+                           <div className="h-8 w-8 rounded-full bg-yellow/20 border border-yellow/20" />
+                        </div>
+                      </header>
+                      <div className="grid grid-cols-3 gap-4">
+                        {[
+                          { label: 'Vendas Hoje', val: 'R$ 12.450', color: 'yellow' },
+                          { label: 'Taxa Conv.', val: '4.8%', color: 'white' },
+                          { label: 'Pedidos', val: '128', color: 'white' }
+                        ].map((stat, i) => (
+                          <div key={i} className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                            <p className="text-[10px] uppercase text-white/40 mb-1">{stat.label}</p>
+                            <p className={`text-lg font-bold ${stat.color === 'yellow' ? 'text-yellow' : 'text-white'}`}>{stat.val}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex-1 bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col">
+                        <div className="h-4 w-40 bg-white/10 rounded-full mb-6" />
+                        <div className="flex-1 flex items-end justify-between gap-2 px-2 pb-2">
+                          {[40, 70, 45, 90, 65, 85, 55, 75, 95, 100].map((h, i) => (
+                            <div 
+                              key={i} 
+                              className="w-full bg-gradient-to-t from-yellow/20 to-yellow/80 rounded-t-sm animate-in slide-in-from-bottom duration-1000 ease-out"
+                              style={{ height: `${h}%`, transitionDelay: `${i * 100}ms` }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent pointer-events-none" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
     <section id="precos" className="py-32">

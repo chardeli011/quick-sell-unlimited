@@ -187,10 +187,15 @@ function Nav() {
           <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Preços</a>
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
-        <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
-          <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
-          <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
-        </a>
+        <div className="flex items-center gap-4">
+          <a href="https://app.quikbr.com" target="_blank" rel="noopener noreferrer" className="hidden md:block text-sm font-semibold text-white/70 hover:text-white transition-colors">
+            Entrar
+          </a>
+          <a href="https://app.quikbr.com/auth/register" target="_blank" rel="noopener noreferrer" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
+            <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
+            <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
+          </a>
+        </div>
       </div>
     </header>
   );

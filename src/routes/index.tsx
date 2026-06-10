@@ -16,6 +16,7 @@ import {
   Star,
   Bell,
   DollarSign,
+  Lock,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({

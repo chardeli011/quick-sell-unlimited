@@ -1042,7 +1042,6 @@ function FinalCTA() {
 
           <div className="relative max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow/10 border border-yellow/20 text-yellow text-sm font-semibold mb-8 whitespace-nowrap" data-reveal>
-              <Zap className="w-4 h-4 fill-yellow shrink-0" />
               <span>Plataforma pronta em 5 minutos</span>
             </div>
             

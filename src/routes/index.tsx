@@ -896,27 +896,24 @@ function LaptopDashboard() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
-          end: "center center",
+          end: "+=100%", // Scroll distance of 100% of the viewport height
           scrub: 1,
           pin: true,
+          anticipatePin: 1,
         }
       });
 
-      tl.fromTo(lidRef.current, 
-        { rotateX: 0 },
-        {
-          rotateX: -105,
-          duration: 2,
-          ease: "none",
-          onUpdate: function() {
-            const p = this.progress();
-            if (p > 0.8) setPhase('dashboard');
-            else if (p > 0.4) setPhase('loading');
-            else setPhase('login');
-            setProgress(p);
-          }
+      tl.to(lidRef.current, {
+        rotateX: -110,
+        ease: "none",
+        onUpdate: function() {
+          const p = this.progress();
+          if (p > 0.8) setPhase('dashboard');
+          else if (p > 0.4) setPhase('loading');
+          else setPhase('login');
+          setProgress(p);
         }
-      );
+      });
 
       gsap.to(".light-bloom", {
         opacity: 0.4,
@@ -933,7 +930,7 @@ function LaptopDashboard() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-32">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-32 z-[50]">
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       <div className="light-bloom absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
       <div className="light-bloom absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
@@ -954,8 +951,8 @@ function LaptopDashboard() {
           
           <div 
             ref={lidRef}
-            className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom transform-style-3d shadow-2xl z-10"
-            style={{ transform: 'rotateX(0deg)' }}
+            className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
+            style={{ transform: 'rotateX(0deg)', transformStyle: 'preserve-3d' }}
           >
             <div className="absolute inset-[2%] bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">
               {phase === 'login' && (

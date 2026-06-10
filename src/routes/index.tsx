@@ -242,7 +242,9 @@ function Hero() {
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a 
           data-hero-cta 
-          href="#cta" 
+          href="https://app.quikbr.com/auth/register" 
+          target="_blank"
+          rel="noopener noreferrer"
           className={`btn-yellow w-full sm:w-[320px] justify-center shadow-2xl ${isSpotlight ? 'bg-black text-yellow border-black' : ''}`}
         >
           <span className="btn-flip-content">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>

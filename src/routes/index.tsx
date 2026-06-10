@@ -896,7 +896,8 @@ function RealTimeNotifications() {
 
 function Pricing() {
   return (
-    <section id="precos" className="py-32">
+    <section id="precos" className="py-32 relative overflow-hidden">
+      <div className="absolute top-1/2 -right-20 w-96 h-96 bg-yellow/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="chip mb-6" data-reveal>Preços</span>
         <h2 className="font-display text-4xl md:text-6xl font-bold" data-reveal>

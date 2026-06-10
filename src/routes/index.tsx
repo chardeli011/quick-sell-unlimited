@@ -325,7 +325,9 @@ function WhyQuik() {
     { icon: Headphones, t: "Suporte que resolve", d: "Time humano, disponível, que responde de verdade. Porque problema com dinheiro não pode esperar." },
   ];
   return (
-    <section id="por-que" className="py-32 relative">
+    <section id="por-que" className="py-32 relative overflow-hidden">
+      {/* Dynamic background for section */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-yellow/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-3xl">
           <span className="chip mb-6" data-reveal>Por que a Quik</span>
@@ -894,7 +896,8 @@ function RealTimeNotifications() {
 
 function Pricing() {
   return (
-    <section id="precos" className="py-32">
+    <section id="precos" className="py-32 relative overflow-hidden">
+      <div className="absolute top-1/2 -right-20 w-96 h-96 bg-yellow/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="chip mb-6" data-reveal>Preços</span>
         <h2 className="font-display text-4xl md:text-6xl font-bold" data-reveal>
@@ -983,7 +986,8 @@ function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="py-32">
+    <section id="faq" className="py-32 relative overflow-hidden">
+      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-yellow/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="chip mb-6" data-reveal>FAQ</span>
@@ -1163,7 +1167,14 @@ function Footer() {
 function QuikLanding() {
   const ref = useReveal();
   return (
-    <div ref={ref} className="min-h-screen bg-black text-white">
+    <div ref={ref} className="min-h-screen bg-black text-white relative">
+      {/* Dynamic Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-yellow/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] bg-yellow/5 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+
       {/* Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -1172,7 +1183,7 @@ function QuikLanding() {
         rel="stylesheet"
       />
       <Nav />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Stats />
         <WhyQuik />

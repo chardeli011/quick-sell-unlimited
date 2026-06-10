@@ -1126,7 +1126,7 @@ function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-xs text-white/20">
+          <div className="text-xs text-white/20 flex flex-col md:flex-row items-center gap-2 md:gap-4">
             <span>© 2026 Quik. Todos os direitos reservados.</span>
             <span className="hidden md:inline text-white/20">•</span>
             <a 
@@ -1137,6 +1137,7 @@ function Footer() {
             >
               Site desenvolvido por: <span className="font-bold">Brabo dos sites</span>
             </a>
+          </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

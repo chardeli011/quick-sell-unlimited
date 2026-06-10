@@ -14,6 +14,8 @@ import {
   Plus,
   Minus,
   Star,
+  Bell,
+  DollarSign,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -733,6 +735,149 @@ function GatewayAwards() {
   );
 }
 
+function RealTimeNotifications() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const notificationsRef = useRef<HTMLDivElement>(null);
+
+  const sales = [
+    { name: "João M.", value: "R$ 197,00", time: "agora mesmo" },
+    { name: "Ana Paula S.", value: "R$ 497,90", time: "há 2 min" },
+    { name: "Marcos V.", value: "R$ 97,00", time: "há 5 min" },
+    { name: "Beatriz C.", value: "R$ 1.290,00", time: "há 8 min" },
+  ];
+
+  useEffect(() => {
+    if (isServer || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Phone floating animation
+      gsap.to(phoneRef.current, {
+        y: -20,
+        rotationZ: 5,
+        rotationY: 10,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+
+      // Notifications appearing and falling
+      const notifications = gsap.utils.toArray(".notification-card");
+      gsap.set(notifications, { opacity: 0, x: 50, scale: 0.8 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 60%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      tl.to(notifications, {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        stagger: 0.4,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="py-32 relative overflow-hidden bg-black">
+      <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div className="order-2 lg:order-1">
+          <span className="chip mb-6" data-reveal>Tempo Real</span>
+          <h2 className="font-display text-4xl md:text-6xl font-bold mb-8" data-reveal>
+            Sinta o prazer de <span className="text-yellow" data-no-typewriter>vender a cada segundo.</span>
+          </h2>
+          <p className="text-xl text-white/60 leading-relaxed mb-10" data-reveal>
+            Receba notificações instantâneas de cada venda realizada. Nossa tecnologia entrega o feedback que você precisa para manter o foco na escala.
+          </p>
+          
+          <div className="space-y-6" data-stagger>
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-yellow/30 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-yellow/10 flex items-center justify-center shrink-0">
+                <Bell className="w-6 h-6 text-yellow" />
+              </div>
+              <div>
+                <h4 className="font-display text-xl font-bold mb-2">Push que dá lucro</h4>
+                <p className="text-white/50">Notificações otimizadas que te mostram exatamente o que importa: dinheiro no bolso.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-yellow/30 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-yellow/10 flex items-center justify-center shrink-0">
+                <DollarSign className="w-6 h-6 text-yellow" />
+              </div>
+              <div>
+                <h4 className="font-display text-xl font-bold mb-2">Checkout Veloz</h4>
+                <p className="text-white/50">Menos de 2 segundos para o seu cliente finalizar e o seu celular vibrar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="order-1 lg:order-2 flex justify-center items-center relative min-h-[600px]">
+          {/* 3D Phone Mockup Container */}
+          <div 
+            ref={phoneRef}
+            className="relative w-[280px] h-[580px] bg-[#0A0A0A] rounded-[3rem] border-[8px] border-[#1A1A1A] shadow-2xl overflow-hidden perspective-1000 z-10"
+          >
+            {/* Screen Content */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#111] to-black p-6 pt-12">
+              <div className="flex justify-between items-center mb-10">
+                <div className="w-10 h-10 rounded-full bg-yellow/10 flex items-center justify-center">
+                  <img src="/logoquik.svg" alt="Quik" className="w-6 h-auto" onError={(e) => (e.currentTarget.src = "https://i.ibb.co/Vp8p36C/logo-quik.png")} />
+                </div>
+                <div className="text-[10px] text-white/30 uppercase tracking-widest font-bold">Quik App</div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="h-4 w-2/3 bg-white/5 rounded-full" />
+                <div className="h-4 w-1/2 bg-white/5 rounded-full opacity-50" />
+              </div>
+            </div>
+
+            {/* Glossy Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Falling Notifications */}
+          <div className="absolute left-1/2 lg:left-2/3 -translate-x-1/2 w-full max-w-[320px] space-y-4 z-20">
+            {sales.map((sale, i) => (
+              <div 
+                key={i}
+                className="notification-card bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl flex items-center gap-4 group hover:border-yellow/50 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-full bg-yellow flex items-center justify-center shrink-0 shadow-lg shadow-yellow/20">
+                  <img src="/logoquik.svg" alt="Q" className="w-5 h-auto brightness-0" onError={(e) => (e.currentTarget.src = "https://i.ibb.co/Vp8p36C/logo-quik.png")} />
+                </div>
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <p className="text-[10px] text-yellow font-bold uppercase tracking-wider mb-1">Venda Realizada!</p>
+                    <span className="text-[9px] text-white/30">{sale.time}</span>
+                  </div>
+                  <p className="text-white text-sm font-bold">{sale.value}</p>
+                  <p className="text-white/40 text-[11px]">{sale.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Background Decorations */}
+          <div className="absolute inset-0 bg-yellow/5 blur-[120px] rounded-full scale-150 -z-10" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
     <section id="precos" className="py-32">
@@ -1013,6 +1158,7 @@ function QuikLanding() {
         <NextSteps />
         <HowItWorks />
         <GatewayAwards />
+        <RealTimeNotifications />
         <Pricing />
         <Security />
         <FAQ />

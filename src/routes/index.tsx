@@ -1127,8 +1127,16 @@ function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-xs text-white/20">
-            © 2026 Quik. Todos os direitos reservados.
-          </div>
+            <span>© 2026 Quik. Todos os direitos reservados.</span>
+            <span className="hidden md:inline text-white/20">•</span>
+            <a 
+              href="https://www.instagram.com/brabodosites" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-yellow transition-colors"
+            >
+              Site desenvolvido por: <span className="font-bold">Brabo dos sites</span>
+            </a>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

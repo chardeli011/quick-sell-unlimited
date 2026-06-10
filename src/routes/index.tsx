@@ -780,7 +780,7 @@ function Security() {
         <div>
           <span className="chip mb-6" data-reveal>Autoridade</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight" data-reveal>
-            Sua operação <span className="text-yellow">protegida</span> do início ao fim.
+            Sua operação <span className="text-yellow" data-no-typewriter>protegida</span> do início ao fim.
           </h2>
           <p className="mt-6 text-white/60 text-lg" data-reveal>
             Não é só promessa. É infraestrutura real.

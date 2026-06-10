@@ -411,7 +411,7 @@ function NextSteps() {
     { 
       t: "Dados em tempo real", 
       d: "Analytics profundo para você tomar decisões baseadas em números, não em achismos.",
-      img: "https://images.unsplash.com/photo-1551288049-bbda46304743?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800"
     },
   ];
 

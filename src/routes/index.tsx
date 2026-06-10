@@ -961,8 +961,8 @@ function Security() {
               {/* Glass Reflection effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="w-8 h-8 rounded-full bg-yellow/10 flex items-center justify-center shrink-0 group-hover:bg-yellow group-hover:scale-110 group-hover:rotate-[360deg] transition-all duration-700 ease-out border border-yellow/20 group-hover:border-transparent shadow-[0_0_15px_rgba(254,255,0,0)] group-hover:shadow-[0_0_20px_rgba(254,255,0,0.4)]">
-                <Check className="w-4 h-4 text-yellow group-hover:text-black transition-colors duration-500" strokeWidth={3} />
+              <div className="w-8 h-8 rounded-full bg-yellow flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:rotate-[360deg] transition-all duration-700 ease-out shadow-[0_0_15px_rgba(254,255,0,0.2)] group-hover:shadow-[0_0_20px_rgba(254,255,0,0.4)]">
+                <Check className="w-4 h-4 text-black" strokeWidth={3} />
               </div>
               <span className="text-white/70 group-hover:text-white font-medium transition-colors duration-300 relative z-10">{i}</span>
             </div>

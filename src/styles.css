@@ -214,7 +214,7 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  .hero-shine {
+  .hero-shine, .text-yellow {
     background: linear-gradient(
       90deg,
       #ffffff 0%,
@@ -225,8 +225,10 @@
     );
     background-size: 200% 100%;
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
     animation: hero-shine 3.5s linear infinite;
+    display: inline-block;
   }
   @keyframes hero-shine {
     0%   { background-position: 200% 0; }

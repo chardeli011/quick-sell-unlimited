@@ -895,8 +895,8 @@ function LaptopDashboard() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
-          end: "+=100%", // Scroll distance of 100% of the viewport height
+          start: "top top",
+          end: "+=200%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -904,14 +904,14 @@ function LaptopDashboard() {
       });
 
       tl.to(lidRef.current, {
-        rotateX: -110,
+        rotateX: -105,
         ease: "none",
         onUpdate: function() {
           const p = this.progress();
-          if (p > 0.8) setPhase('dashboard');
-          else if (p > 0.4) setPhase('loading');
-          else setPhase('login');
           setProgress(p);
+          if (p > 0.8) setPhase('dashboard');
+          else if (p > 0.3) setPhase('loading');
+          else setPhase('login');
         }
       });
 
@@ -930,7 +930,7 @@ function LaptopDashboard() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-32 z-[50]">
+    <section ref={containerRef} className="relative h-screen flex flex-col items-center justify-center bg-black overflow-hidden z-[50]">
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       <div className="light-bloom absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
       <div className="light-bloom absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
@@ -952,7 +952,11 @@ function LaptopDashboard() {
           <div 
             ref={lidRef}
             className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
-            style={{ transform: 'rotateX(0deg)', transformStyle: 'preserve-3d' }}
+            style={{ 
+              transform: 'rotateX(0deg)', 
+              transformStyle: 'preserve-3d',
+              backfaceVisibility: 'hidden'
+            }}
           >
             <div className="absolute inset-[2%] bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">
               {phase === 'login' && (

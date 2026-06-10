@@ -27,15 +27,15 @@ export const Route = createFileRoute("/")({
   component: QuikLanding,
     head: () => ({
       meta: [
-        { title: "Quik - Checkout e Gateway de Pagamento para Infoprodutos" },
+        { title: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
         {
           name: "description",
           content:
-            "Aumente suas vendas com a Quik. O melhor gateway de pagamento e checkout para infoprodutos com Pix instantaneo, aprovacao maxima e seguranca total.",
+            "Aumente suas vendas com a Quik. O melhor gateway de pagamento e checkout para infoprodutos com Pix instantâneo, aprovação máxima e segurança total.",
         },
         { name: "keywords", content: "gateway de pagamento, checkout infoprodutos, vender infoprodutos, plataforma de afiliados, pagamentos online, quik pagamentos" },
-        { property: "og:title", content: "Quik - Checkout e Gateway de Pagamento para Infoprodutos" },
-        { property: "og:description", content: "Plataforma de pagamentos de alta performance para infoprodutores e negocios digitais." },
+        { property: "og:title", content: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        { property: "og:description", content: "Plataforma de pagamentos de alta performance para infoprodutores e negócios digitais." },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
@@ -184,7 +184,7 @@ function Nav() {
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
           <a href="#por-que" className="hover:text-yellow hover:-translate-y-1 transition-all">Plataforma</a>
           <a href="#como" className="hover:text-yellow hover:-translate-y-1 transition-all">Como funciona</a>
-          <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Precos</a>
+          <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Preços</a>
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
         <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
@@ -323,8 +323,8 @@ function Stats() {
 
 function WhyQuik() {
   const cards = [
-    { icon: Wallet, t: "Aprovação maxima", d: "Nosso motor antifraude aprova mais vendas sem abrir mão da seguranca. Menos recusa, mais dinheiro no seu bolso." },
-    { icon: Zap, t: "Pagamento instantaneo", d: "Receba via Pix em segundos. Seu saldo disponível imediatamente, sem esperar dias ou semanas." },
+    { icon: Wallet, t: "Aprovação máxima", d: "Nosso motor antifraude aprova mais vendas sem abrir mão da segurança. Menos recusa, mais dinheiro no seu bolso." },
+    { icon: Zap, t: "Pagamento instantâneo", d: "Receba via Pix em segundos. Seu saldo disponível imediatamente, sem esperar dias ou semanas." },
     { icon: ShoppingCart, t: "Checkout que converte", d: "Checkout otimizado para mobile, com um clique e sem fricção. Menos abandono, mais conversão garantido." },
     { icon: ShieldCheck, t: "Segurança de verdade", d: "Infraestrutura com criptografia de ponta, certificação PCI DSS e antifraude inteligente. Você vende, nós protegemos." },
     { icon: LineChart, t: "Dashboard em tempo real", d: "Acompanhe cada venda, cada clique e cada conversão no momento em que acontece. Sem atraso, sem achismo." },
@@ -369,12 +369,12 @@ function WhyQuik() {
 
 function Awards() {
   const awards = [
-    "🥇 Plataforma Revelação 2024 - InfoCommerce Awards",
-    "🏆 Melhor Gateway para Infoprodutos - Summit Digital Brasil",
-    "⭐ Top 10 Plataformas de Pagamento - Ranking Mercado Digital",
-    "🚀 Startup de Alto Impacto - Aceleração Tech BR",
-    "💎 Melhor Experiência de Checkout - Prêmio UX Finance 2024",
-    "🔥 Plataforma Mais Bem Avaliada - Comunidade Lançadores BR",
+    "🥇 Plataforma Revelação 2024 — InfoCommerce Awards",
+    "🏆 Melhor Gateway para Infoprodutos — Summit Digital Brasil",
+    "⭐ Top 10 Plataformas de Pagamento — Ranking Mercado Digital",
+    "🚀 Startup de Alto Impacto — Aceleração Tech BR",
+    "💎 Melhor Experiência de Checkout — Prêmio UX Finance 2024",
+    "🔥 Plataforma Mais Bem Avaliada — Comunidade Lançadores BR",
   ];
   const loop = [...awards, ...awards];
   return (
@@ -711,7 +711,7 @@ function GatewayAwards() {
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Header - Fixed during the section scroll */}
+      {/* Header — Fixed during the section scroll */}
       <div className="relative z-20 text-center mb-6 pointer-events-none">
         <span className="chip mb-2 inline-block" data-reveal>Reconhecimento & Conquistas</span>
         <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
@@ -905,7 +905,7 @@ function Pricing() {
     <section id="precos" className="py-32 relative overflow-hidden">
       <div className="absolute top-1/2 -right-20 w-96 h-96 bg-yellow/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <span className="chip mb-6" data-reveal>Precos</span>
+        <span className="chip mb-6" data-reveal>Preços</span>
         <h2 className="font-display text-4xl md:text-6xl font-bold" data-reveal>
           Transparência que você <span className="text-yellow" data-no-typewriter>não encontra</span> em outro lugar.
         </h2>
@@ -957,7 +957,7 @@ function Security() {
             data-reveal
             className="mt-10 p-6 border-l-4 border-yellow bg-black/40 italic text-white/80"
           >
-            "A Quik processa transações com o mesmo padrão de seguranca dos grandes bancos digitais
+            "A Quik processa transações com o mesmo padrão de segurança dos grandes bancos digitais
             porque você merece o mesmo nível de proteção."
           </blockquote>
         </div>
@@ -987,7 +987,7 @@ function FAQ() {
     { q: "É grátis pra começar?", a: "Sim. Você cria sua conta, configura seus produtos e só paga uma taxa sobre o que vender. Sem mensalidade, sem pegadinha." },
     { q: "Quanto tempo leva pra receber?", a: "Vendas via Pix caem na sua conta em segundos. Cartão de crédito segue o ciclo padrão da operadora, com as melhores condições do mercado." },
     { q: "Preciso ter CNPJ?", a: "Não. Você pode começar com CPF mesmo. Quando seu negócio crescer, a migração é simples." },
-    { q: "A Quik funciona para infoprodutos e produtos físicos?", a: "Sim. Cursos, mentorias, e-books, assinaturas, produtos físicos - a Quik suporta todos os formatos." },
+    { q: "A Quik funciona para infoprodutos e produtos físicos?", a: "Sim. Cursos, mentorias, e-books, assinaturas, produtos físicos — a Quik suporta todos os formatos." },
     { q: "Tem suporte se eu tiver problema?", a: "Sim, e é suporte humano. Nosso time está disponível para resolver, não só para responder com mensagem automática." },
   ];
   const [open, setOpen] = useState<number | null>(0);
@@ -1106,11 +1106,11 @@ function FinalCTA() {
 
 function Footer() {
   const links = [
-    { label: "Inicio", href: "#" },
+    { label: "Início", href: "#" },
     { label: "Por que a Quik", href: "#por-que" },
-    { label: "Premios", href: "#premios" },
+    { label: "Prêmios", href: "#premios" },
     { label: "Como funciona", href: "#como" },
-    { label: "Precos", href: "#precos" },
+    { label: "Preços", href: "#precos" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -1223,6 +1223,9 @@ function QuikLanding() {
         <FinalCTA />
       </main>
       <Footer />
+      {process.env.NODE_ENV === 'development' && (
+        <div id="lovable-tagger" />
+      )}
     </div>
   );
 }

@@ -356,7 +356,7 @@ function Awards() {
   const awards = [
     "🥇 Plataforma Revelação 2024 — InfoCommerce Awards",
     "🏆 Melhor Gateway para Infoprodutos — Summit Digital Brasil",
-    "⭐ Top 3 Plataformas de Pagamento — Ranking Mercado Digital",
+    "⭐ Top 10 Plataformas de Pagamento — Ranking Mercado Digital",
     "🚀 Startup de Alto Impacto — Aceleração Tech BR",
     "💎 Melhor Experiência de Checkout — Prêmio UX Finance 2024",
     "🔥 Plataforma Mais Bem Avaliada — Comunidade Lançadores BR",

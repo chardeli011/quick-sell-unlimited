@@ -419,7 +419,7 @@ function NextSteps() {
     <section className="py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="font-display text-4xl md:text-6xl font-bold max-w-4xl mb-20" data-reveal>
-          Seu próximo passo no digital acontece aqui. <span className="text-yellow">E o próximo. E o próximo…</span>
+          Seu próximo passo no digital acontece aqui. <span className="text-yellow" data-no-typewriter>E o próximo. E o próximo…</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -692,12 +692,12 @@ function GatewayAwards() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Header - Fixed during the section scroll */}
-      <div className="relative z-20 text-center mb-12 pointer-events-none">
-        <span className="chip mb-4 inline-block" data-reveal>Reconhecimento</span>
-        <h2 className="awards-title font-display text-4xl md:text-6xl font-bold text-white">
+      <div className="relative z-20 text-center mb-6 pointer-events-none">
+        <span className="chip mb-2 inline-block" data-reveal>Reconhecimento</span>
+        <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
           Premiações Exclusivas
         </h2>
-        <p className="mt-4 text-white/50 max-w-xl mx-auto text-sm md:text-base px-6">
+        <p className="mt-2 text-white/50 max-w-xl mx-auto text-xs md:text-sm px-6">
           A excelência tecnológica e o compromisso com resultados nos tornaram a plataforma mais premiada do mercado digital brasileiro.
         </p>
       </div>

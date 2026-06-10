@@ -1163,7 +1163,14 @@ function Footer() {
 function QuikLanding() {
   const ref = useReveal();
   return (
-    <div ref={ref} className="min-h-screen bg-black text-white">
+    <div ref={ref} className="min-h-screen bg-black text-white relative">
+      {/* Dynamic Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-yellow/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] bg-yellow/5 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+
       {/* Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -1172,7 +1179,7 @@ function QuikLanding() {
         rel="stylesheet"
       />
       <Nav />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Stats />
         <WhyQuik />

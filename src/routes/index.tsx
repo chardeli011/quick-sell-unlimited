@@ -646,8 +646,8 @@ function GatewayAwards() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 20%",
-          end: `+=${totalSteps * 80}%`,
+          start: "top top",
+          end: `+=${totalSteps * 100}%`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,

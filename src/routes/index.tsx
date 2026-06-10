@@ -647,7 +647,7 @@ function GatewayAwards() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: `+=${totalSteps * 100}%`,
+          end: `+=${totalSteps * 70}%`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,

@@ -739,7 +739,7 @@ function Pricing() {
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="chip mb-6" data-reveal>Preços</span>
         <h2 className="font-display text-4xl md:text-6xl font-bold" data-reveal>
-          Transparência que você <span className="text-yellow">não encontra</span> em outro lugar.
+          Transparência que você <span className="text-yellow" data-no-typewriter>não encontra</span> em outro lugar.
         </h2>
         <p className="mt-6 text-lg text-white/60 max-w-2xl mx-auto" data-reveal>
           Sem mensalidade. Sem taxa de adesão. Sem surpresa no boleto. Você só paga quando vende.

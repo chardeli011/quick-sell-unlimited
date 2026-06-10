@@ -25,16 +25,21 @@ import {
 
 export const Route = createFileRoute("/")({
   component: QuikLanding,
-  head: () => ({
-    meta: [
-      { title: "Quik — Venda mais. Receba na hora. Escale sem limite." },
-      {
-        name: "description",
-        content:
-          "A Quik é a plataforma de pagamentos para infoprodutos. Aprovação máxima, Pix instantâneo e checkout que converte.",
-      },
-    ],
-  }),
+    head: () => ({
+      meta: [
+        { title: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        {
+          name: "description",
+          content:
+            "Aumente suas vendas com a Quik. O melhor gateway de pagamento e checkout para infoprodutos com Pix instantâneo, aprovação máxima e segurança total.",
+        },
+        { name: "keywords", content: "gateway de pagamento, checkout infoprodutos, vender infoprodutos, plataforma de afiliados, pagamentos online, quik pagamentos" },
+        { property: "og:title", content: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        { property: "og:description", content: "Plataforma de pagamentos de alta performance para infoprodutores e negócios digitais." },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+    }),
 });
 
 const isServer = typeof window === "undefined";
@@ -221,9 +226,9 @@ function Hero() {
         <Zap className="w-3.5 h-3.5" /> A plataforma que mais cresce no mercado digital
       </span>
       <h1 data-no-typewriter className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight">
-        <span className="block">Venda mais.</span>
-        <span className="block">Receba na hora.</span>
-        <span className="block hero-shine">Escale sem limite.</span>
+        <span className="block">O Gateway de Pagamento</span>
+        <span className="block">Feito para Infoprodutos.</span>
+        <span className="block hero-shine">Escale sem limites.</span>
       </h1>
       <p data-hero-sub className={`mt-8 text-lg md:text-xl max-w-2xl mx-auto ${isSpotlight ? 'text-black/70' : 'opacity-65'}`}>
         A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. Simples,
@@ -275,6 +280,7 @@ function Hero() {
               loop
               muted
               playsInline
+              title="Quik Gateway de Pagamento em Ação"
               className="w-full h-full object-contain mix-blend-screen opacity-90 transition-opacity duration-700 hover:opacity-100"
             >
               <source src="/formula1.mp4" type="video/mp4" />
@@ -332,7 +338,7 @@ function WhyQuik() {
         <div className="max-w-3xl">
           <span className="chip mb-6" data-reveal>Por que a Quik</span>
           <h2 data-reveal className="font-display text-4xl md:text-6xl font-bold leading-[1.05]">
-            Chega de plataforma que <span className="text-yellow" data-no-typewriter>complica</span> o que deveria ser simples.
+            O Gateway de Pagamento que <span className="text-yellow" data-no-typewriter>descomplica</span> suas vendas.
           </h2>
           <p data-reveal className="mt-6 text-lg text-white/60">
             Enquanto outras plataformas cobram taxas escondidas e travam seu dinheiro, a Quik foi
@@ -1123,7 +1129,7 @@ function Footer() {
           </div>
           
           <div className="lg:col-start-4">
-            <h4 className="font-display text-white font-bold mb-6 text-sm uppercase tracking-wider">Links Úteis</h4>
+            <h3 className="font-display text-white font-bold mb-6 text-sm uppercase tracking-wider">Links Úteis</h3>
             <div className="grid grid-cols-2 gap-y-3 gap-x-8">
               {links.map((link) => (
                 <a 
@@ -1168,6 +1174,25 @@ function QuikLanding() {
   const ref = useReveal();
   return (
     <div ref={ref} className="min-h-screen bg-black text-white relative">
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Quik",
+          "operatingSystem": "Web",
+          "applicationCategory": "FinanceApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "12000"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          }
+        })}
+      </script>
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="light-glow top-[-10%] left-[-10%] w-[40%] h-[40%]" />

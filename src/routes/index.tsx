@@ -829,7 +829,7 @@ function FAQ() {
         <div className="text-center mb-16">
           <span className="chip mb-6" data-reveal>FAQ</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
-            Respostas rápidas para quem <span className="text-yellow">não tem tempo</span> a perder.
+            Respostas rápidas para quem <span className="text-yellow" data-no-typewriter>não tem tempo</span> a perder.
           </h2>
         </div>
         <div className="space-y-3" data-stagger>

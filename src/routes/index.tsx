@@ -948,15 +948,24 @@ function LaptopDashboard() {
         </p>
       </div>
 
-      <div className="perspective-3000 w-full max-w-[850px] flex justify-center px-10 relative">
-        <div className="relative w-full aspect-[16/10] flex items-end">
-          {/* Base */}
-          <div className="absolute bottom-0 left-[-2%] right-[-2%] h-[6%] bg-[#1a1a1a] rounded-b-2xl border-t border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20" />
+      <div className="perspective-3000 w-full max-w-[850px] flex justify-center px-10 relative mt-20">
+        <div className="relative w-full aspect-[16/10]">
+          {/* Main Body / Keyboard Area */}
+          <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-[#1a1a1a] rounded-b-2xl border-t border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] z-20 overflow-hidden">
+            {/* Keyboard Simulation */}
+            <div className="absolute inset-x-8 top-6 bottom-8 grid grid-cols-10 gap-2 opacity-20">
+              {Array.from({ length: 30 }).map((_, i) => (
+                <div key={i} className="bg-white/10 rounded-sm" />
+              ))}
+            </div>
+            {/* Trackpad */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-20 bg-black/40 rounded-lg border border-white/5" />
+          </div>
           
-          {/* Lid */}
+          {/* Lid (Screen) */}
           <div 
             ref={lidRef}
-            className="absolute bottom-[6%] left-0 right-0 top-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
+            className="absolute bottom-[45%] left-0 right-0 h-full bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
             style={{ 
               transform: 'rotateX(90deg)', 
               transformStyle: 'preserve-3d',

@@ -695,7 +695,7 @@ function GatewayAwards() {
       <div className="relative z-20 text-center mb-6 pointer-events-none">
         <span className="chip mb-2 inline-block" data-reveal>Reconhecimento & Conquistas</span>
         <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
-          Sua Jornada Premiada
+          Sua Jornada <span className="text-yellow" data-no-typewriter>Premiada</span>
         </h2>
         <p className="mt-2 text-white/50 max-w-xl mx-auto text-xs md:text-sm px-6">
           Alcance novas metas de faturamento e seja recompensado com prêmios exclusivos que celebram o sucesso e a escala do seu negócio digital.

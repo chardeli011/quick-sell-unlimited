@@ -345,8 +345,8 @@ function WhyQuik() {
               data-interactive
               className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-all duration-500 relative perspective-1000"
             >
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow group-hover:rotate-12 transition-all duration-500">
-                <Icon className="w-5 h-5 text-yellow group-hover:text-black transition-colors" />
+              <div className="w-12 h-12 rounded-xl bg-yellow border border-yellow flex items-center justify-center mb-6 group-hover:rotate-12 transition-all duration-500">
+                <Icon className="w-5 h-5 text-black" />
               </div>
               <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-yellow transition-colors">{t}</h3>
               <p className="text-white/55 text-sm leading-relaxed">{d}</p>
@@ -1074,18 +1074,18 @@ function FinalCTA() {
               </a>
             </div>
 
-            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-40" data-reveal>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Sem mensalidade</span>
+            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6" data-reveal>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Sem mensalidade</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Aprovação imediata</span>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Aprovação imediata</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Pix na hora</span>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Pix na hora</span>
               </div>
             </div>
           </div>
@@ -1126,9 +1126,9 @@ function Footer() {
                 <a 
                   key={link.label}
                   href={link.href} 
-                  className="text-white/50 hover:text-yellow text-sm transition-all duration-300 flex items-center group"
+                  className="text-white/50 hover:text-yellow text-sm transition-all duration-300 flex items-center group/footerlink"
                 >
-                  <span className="w-0 group-hover:w-2 h-px bg-yellow mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  <ArrowRight className="w-3 h-3 text-yellow mr-2 opacity-50 group-hover/footerlink:opacity-100 transition-opacity" />
                   {link.label}
                 </a>
               ))}

@@ -1139,7 +1139,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-xs text-white/20 flex flex-col md:flex-row items-center gap-2 md:gap-4">
             <span>© 2026 Quik. Todos os direitos reservados.</span>
             <span className="hidden md:inline text-white/20">•</span>

@@ -896,23 +896,27 @@ function LaptopDashboard() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top center",
-          end: "bottom center",
+          end: "center center",
           scrub: 1,
+          pin: true,
         }
       });
 
-      tl.to(lidRef.current, {
-        rotateX: -105,
-        duration: 2,
-        ease: "power2.inOut",
-        onUpdate: function() {
-          const p = this.progress();
-          if (p > 0.8) setPhase('dashboard');
-          else if (p > 0.4) setPhase('loading');
-          else setPhase('login');
-          setProgress(p);
+      tl.fromTo(lidRef.current, 
+        { rotateX: 0 },
+        {
+          rotateX: -105,
+          duration: 2,
+          ease: "none",
+          onUpdate: function() {
+            const p = this.progress();
+            if (p > 0.8) setPhase('dashboard');
+            else if (p > 0.4) setPhase('loading');
+            else setPhase('login');
+            setProgress(p);
+          }
         }
-      });
+      );
 
       gsap.to(".light-bloom", {
         opacity: 0.4,

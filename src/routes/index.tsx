@@ -1074,18 +1074,18 @@ function FinalCTA() {
               </a>
             </div>
 
-            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-40" data-reveal>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Sem mensalidade</span>
+            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6" data-reveal>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Sem mensalidade</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Aprovação imediata</span>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Aprovação imediata</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5 text-yellow" />
-                <span className="text-sm font-medium">Pix na hora</span>
+              <div className="flex items-center gap-2 group/bullet">
+                <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
+                <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Pix na hora</span>
               </div>
             </div>
           </div>

@@ -904,9 +904,9 @@ function LaptopDashboard() {
       });
 
       tl.fromTo(lidRef.current, 
-        { rotateX: 0 },
+        { rotateX: 90 },
         {
-          rotateX: -110,
+          rotateX: 0,
           ease: "none",
           onUpdate: function() {
             const p = this.progress();

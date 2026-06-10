@@ -323,7 +323,7 @@ function WhyQuik() {
         <div className="max-w-3xl">
           <span className="chip mb-6" data-reveal>Por que a Quik</span>
           <h2 data-reveal className="font-display text-4xl md:text-6xl font-bold leading-[1.05]">
-            Chega de plataforma que <span className="text-yellow">complica</span> o que deveria ser simples.
+            Chega de plataforma que <span className="text-yellow" data-no-typewriter>complica</span> o que deveria ser simples.
           </h2>
           <p data-reveal className="mt-6 text-lg text-white/60">
             Enquanto outras plataformas cobram taxas escondidas e travam seu dinheiro, a Quik foi
@@ -366,7 +366,7 @@ function Awards() {
     <section className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center mb-14">
         <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
-          Reconhecimento de quem <span className="text-yellow">entende</span> do mercado
+          Reconhecimento de quem <span className="text-yellow" data-no-typewriter>entende</span> do mercado
         </h2>
         <p className="mt-4 text-white/60 max-w-2xl mx-auto" data-reveal>
           A Quik não é só mais uma plataforma é a escolha de quem já chegou lá.
@@ -419,7 +419,7 @@ function NextSteps() {
     <section className="py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="font-display text-4xl md:text-6xl font-bold max-w-4xl mb-20" data-reveal>
-          Seu próximo passo no digital acontece aqui. <span className="text-yellow">E o próximo. E o próximo…</span>
+          Seu próximo passo no digital acontece aqui. <span className="text-yellow" data-no-typewriter>E o próximo. E o próximo…</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -570,7 +570,7 @@ function HowItWorks() {
         <div className="w-[40vw] shrink-0">
           <span className="chip mb-6">Como funciona</span>
           <h2 className="font-display text-4xl md:text-7xl font-bold">
-            Em <span className="text-yellow">3 passos</span>,<br />você já está vendendo.
+            Em <span className="text-yellow" data-no-typewriter>3 passos</span>,<br />você já está vendendo.
           </h2>
         </div>
         {steps.map((s, i) => (
@@ -695,7 +695,7 @@ function GatewayAwards() {
       <div className="relative z-20 text-center mb-6 pointer-events-none">
         <span className="chip mb-2 inline-block" data-reveal>Reconhecimento & Conquistas</span>
         <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
-          Sua Jornada Premiada
+          Sua Jornada <span className="text-yellow" data-no-typewriter>Premiada</span>
         </h2>
         <p className="mt-2 text-white/50 max-w-xl mx-auto text-xs md:text-sm px-6">
           Alcance novas metas de faturamento e seja recompensado com prêmios exclusivos que celebram o sucesso e a escala do seu negócio digital.
@@ -739,7 +739,7 @@ function Pricing() {
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="chip mb-6" data-reveal>Preços</span>
         <h2 className="font-display text-4xl md:text-6xl font-bold" data-reveal>
-          Transparência que você <span className="text-yellow">não encontra</span> em outro lugar.
+          Transparência que você <span className="text-yellow" data-no-typewriter>não encontra</span> em outro lugar.
         </h2>
         <p className="mt-6 text-lg text-white/60 max-w-2xl mx-auto" data-reveal>
           Sem mensalidade. Sem taxa de adesão. Sem surpresa no boleto. Você só paga quando vende.
@@ -780,7 +780,7 @@ function Security() {
         <div>
           <span className="chip mb-6" data-reveal>Autoridade</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight" data-reveal>
-            Sua operação <span className="text-yellow">protegida</span> do início ao fim.
+            Sua operação <span className="text-yellow" data-no-typewriter>protegida</span> do início ao fim.
           </h2>
           <p className="mt-6 text-white/60 text-lg" data-reveal>
             Não é só promessa. É infraestrutura real.
@@ -829,7 +829,7 @@ function FAQ() {
         <div className="text-center mb-16">
           <span className="chip mb-6" data-reveal>FAQ</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
-            Respostas rápidas para quem <span className="text-yellow">não tem tempo</span> a perder.
+            Respostas rápidas para quem <span className="text-yellow" data-no-typewriter>não tem tempo</span> a perder.
           </h2>
         </div>
         <div className="space-y-3" data-stagger>
@@ -888,7 +888,7 @@ function FinalCTA() {
             </div>
             
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]" data-reveal>
-              Pronto para <span className="text-yellow">começar?</span>
+              Pronto para <span className="text-yellow" data-no-typewriter>começar?</span>
             </h2>
             
             <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 font-medium leading-relaxed" data-reveal>

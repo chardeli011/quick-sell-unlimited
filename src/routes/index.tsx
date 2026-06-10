@@ -1170,9 +1170,15 @@ function QuikLanding() {
     <div ref={ref} className="min-h-screen bg-black text-white relative">
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-yellow/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] bg-yellow/5 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '4s' }} />
+        <div className="light-glow top-[-10%] left-[-10%] w-[40%] h-[40%]" />
+        <div className="light-glow top-[20%] right-[-5%] w-[30%] h-[30%]" style={{ animationDelay: '2s' }} />
+        <div className="light-glow bottom-[-10%] left-[20%] w-[50%] h-[40%]" style={{ animationDelay: '4s' }} />
+        
+        {/* Animated Light Beams */}
+        <div className="light-beam" style={{ left: '10%', top: '-20%', animation: 'beam-float 15s infinite' }} />
+        <div className="light-beam" style={{ left: '40%', top: '-20%', animation: 'beam-float 20s infinite', animationDelay: '5s' }} />
+        <div className="light-beam" style={{ left: '70%', top: '-20%', animation: 'beam-float 18s infinite', animationDelay: '2s' }} />
+        <div className="light-beam" style={{ left: '25%', top: '-20%', animation: 'beam-float 25s infinite', animationDelay: '8s' }} />
       </div>
 
       {/* Fonts */}

@@ -433,7 +433,7 @@ function NextSteps() {
                 <img 
                   src={step.img} 
                   alt={step.t}
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-all duration-700 ease-out bg-[#1A1A1A]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               </div>

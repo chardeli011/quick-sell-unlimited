@@ -17,6 +17,10 @@ import {
   Bell,
   DollarSign,
   Lock,
+  Globe,
+  BarChart3,
+  Layers,
+  MousePointer2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({

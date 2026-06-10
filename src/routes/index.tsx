@@ -813,18 +813,18 @@ function RealTimeNotifications() {
           </p>
           
           <div className="space-y-6" data-stagger>
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-yellow/30 transition-colors group">
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 flex items-center justify-center shrink-0 border border-yellow/20 group-hover:bg-yellow group-hover:scale-110 transition-all duration-500">
-                <Bell className="w-6 h-6 text-yellow group-hover:text-black transition-colors" />
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-yellow/30 transition-colors group">
+              <div className="w-12 h-12 rounded-xl bg-yellow flex items-center justify-center shrink-0 border border-yellow/20 group-hover:scale-110 transition-all duration-500">
+                <Bell className="w-6 h-6 text-black transition-colors" />
               </div>
               <div>
                 <h4 className="font-display text-xl font-bold mb-2">Push que dá lucro</h4>
                 <p className="text-white/50">Notificações otimizadas que te mostram exatamente o que importa: dinheiro no bolso.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-yellow/30 transition-colors group">
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 flex items-center justify-center shrink-0 border border-yellow/20 group-hover:bg-yellow group-hover:scale-110 transition-all duration-500">
-                <DollarSign className="w-6 h-6 text-yellow group-hover:text-black transition-colors" />
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-yellow/30 transition-colors group">
+              <div className="w-12 h-12 rounded-xl bg-yellow flex items-center justify-center shrink-0 border border-yellow/20 group-hover:scale-110 transition-all duration-500">
+                <DollarSign className="w-6 h-6 text-black transition-colors" />
               </div>
               <div>
                 <h4 className="font-display text-xl font-bold mb-2">Checkout Veloz</h4>

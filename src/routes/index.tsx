@@ -1129,7 +1129,7 @@ function Footer() {
           </div>
           
           <div className="lg:col-start-4">
-            <h4 className="font-display text-white font-bold mb-6 text-sm uppercase tracking-wider">Links Úteis</h4>
+            <h3 className="font-display text-white font-bold mb-6 text-sm uppercase tracking-wider">Links Úteis</h3>
             <div className="grid grid-cols-2 gap-y-3 gap-x-8">
               {links.map((link) => (
                 <a 

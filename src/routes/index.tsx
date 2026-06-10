@@ -345,8 +345,8 @@ function WhyQuik() {
               data-interactive
               className="group bg-[color:var(--surface)] p-8 hover:bg-[color:var(--surface-2)] transition-all duration-500 relative perspective-1000"
             >
-              <div className="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center mb-6 group-hover:bg-yellow group-hover:border-yellow group-hover:rotate-12 transition-all duration-500">
-                <Icon className="w-5 h-5 text-yellow group-hover:text-black transition-colors" />
+              <div className="w-12 h-12 rounded-xl bg-yellow border border-yellow flex items-center justify-center mb-6 group-hover:rotate-12 transition-all duration-500">
+                <Icon className="w-5 h-5 text-black" />
               </div>
               <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-yellow transition-colors">{t}</h3>
               <p className="text-white/55 text-sm leading-relaxed">{d}</p>

@@ -294,7 +294,7 @@ function Stats() {
     { v: "5", l: "pra começar a vender", prefix: "", suffix: " min" },
   ];
   return (
-    <section className="border-y border-white/10 bg-[color:var(--surface)]">
+    <section className="bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8" data-stagger>
         {stats.map((s) => (
           <div key={s.l} data-interactive className="text-center md:text-left group hover:-translate-y-2 transition-transform duration-500">
@@ -372,7 +372,7 @@ function Awards() {
   ];
   const loop = [...awards, ...awards];
   return (
-    <section id="premios" className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
+    <section id="premios" className="py-32 bg-[color:var(--surface)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center mb-14">
         <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
           Reconhecimento de quem <span className="text-yellow" data-no-typewriter>entende</span> do mercado
@@ -937,7 +937,7 @@ function Security() {
     "Backup automático de dados",
   ];
   return (
-    <section className="py-32 bg-[color:var(--surface)] border-y border-white/10">
+    <section className="py-32 bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <span className="chip mb-6" data-reveal>Autoridade</span>
@@ -1077,7 +1077,7 @@ function FinalCTA() {
               </a>
             </div>
 
-            <div className="mt-16 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-x-12 gap-y-6" data-reveal>
+            <div className="mt-16 pt-12 flex flex-wrap justify-center gap-x-12 gap-y-6" data-reveal>
               <div className="flex items-center gap-2 group/bullet">
                 <Check className="w-5 h-5 text-yellow group-hover:scale-125 transition-transform" />
                 <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">Sem mensalidade</span>
@@ -1109,7 +1109,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/10 bg-black pt-24 pb-12">
+    <footer className="bg-black pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
@@ -1139,7 +1139,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-xs text-white/20 flex flex-col md:flex-row items-center gap-2 md:gap-4">
             <span>© 2026 Quik. Todos os direitos reservados.</span>
             <span className="hidden md:inline text-white/20">•</span>
@@ -1170,9 +1170,15 @@ function QuikLanding() {
     <div ref={ref} className="min-h-screen bg-black text-white relative">
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-yellow/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[40%] bg-yellow/5 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '4s' }} />
+        <div className="light-glow top-[-10%] left-[-10%] w-[40%] h-[40%]" />
+        <div className="light-glow top-[20%] right-[-5%] w-[30%] h-[30%]" style={{ animationDelay: '2s' }} />
+        <div className="light-glow bottom-[-10%] left-[20%] w-[50%] h-[40%]" style={{ animationDelay: '4s' }} />
+        
+        {/* Animated Light Beams */}
+        <div className="light-beam" style={{ left: '10%', top: '-20%', animation: 'beam-float 15s infinite' }} />
+        <div className="light-beam" style={{ left: '40%', top: '-20%', animation: 'beam-float 20s infinite', animationDelay: '5s' }} />
+        <div className="light-beam" style={{ left: '70%', top: '-20%', animation: 'beam-float 18s infinite', animationDelay: '2s' }} />
+        <div className="light-beam" style={{ left: '25%', top: '-20%', animation: 'beam-float 25s infinite', animationDelay: '8s' }} />
       </div>
 
       {/* Fonts */}

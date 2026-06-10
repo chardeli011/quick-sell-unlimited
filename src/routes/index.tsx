@@ -323,7 +323,7 @@ function WhyQuik() {
         <div className="max-w-3xl">
           <span className="chip mb-6" data-reveal>Por que a Quik</span>
           <h2 data-reveal className="font-display text-4xl md:text-6xl font-bold leading-[1.05]">
-            Chega de plataforma que <span className="text-yellow">complica</span> o que deveria ser simples.
+            Chega de plataforma que <span className="text-yellow" data-no-typewriter>complica</span> o que deveria ser simples.
           </h2>
           <p data-reveal className="mt-6 text-lg text-white/60">
             Enquanto outras plataformas cobram taxas escondidas e travam seu dinheiro, a Quik foi

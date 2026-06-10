@@ -703,31 +703,29 @@ function GatewayAwards() {
       </div>
 
       {/* Awards Showcase Area */}
-      <div className="relative w-full max-w-4xl aspect-video md:aspect-square flex items-center justify-center perspective-2000">
+      <div className="relative w-full max-w-4xl flex-1 flex items-center justify-center perspective-2000">
         {awards.map((award, i) => (
           <div
             key={i}
             ref={(el) => {
               if (el) itemsRef.current[i] = el;
             }}
-            className="absolute inset-0 flex flex-col items-center justify-center p-8"
+            className="absolute inset-0 flex flex-col items-center justify-center p-4"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative group">
+            <div className="relative group flex items-center justify-center w-full h-full">
               {/* Outer Glow */}
-              <div className="absolute inset-0 bg-yellow/20 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-yellow/10 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
               
               {/* Image Container */}
-              <div className="relative w-64 h-64 md:w-[500px] md:h-[500px] flex items-center justify-center">
+              <div className="relative w-full h-full max-h-[60vh] flex items-center justify-center">
                 <img 
                   src={award.img} 
                   alt={award.title}
-                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(254,255,0,0.3)]"
+                  className="max-w-full max-h-full object-contain drop-shadow-[0_0_30px_rgba(254,255,0,0.2)]"
                 />
               </div>
             </div>
-
-            {/* Award Info removed as requested */}
           </div>
         ))}
       </div>

@@ -938,25 +938,27 @@ function LaptopDashboard() {
       <div className="light-bloom absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
       <div className="light-bloom absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
 
-      <div className="relative z-10 text-center mb-20 max-w-4xl px-6">
-        <span className="chip mb-6" data-reveal>Tecnologia & Dados</span>
-        <h2 className="font-display text-4xl md:text-6xl font-bold mb-8" data-reveal>
-          Dashboards <span className="text-yellow" data-no-typewriter>Inteligentes</span> para sua escala.
+      <div className="relative z-10 text-center mb-16 max-w-4xl px-6">
+        <span className="chip mb-6">Tecnologia & Dados</span>
+        <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+          Dashboards <span className="text-yellow">Inteligentes</span> para sua escala.
         </h2>
-        <p className="text-xl text-white/60 leading-relaxed" data-reveal>
+        <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
           Tome decisões baseadas em dados reais. Nossa interface foi projetada para alta performance e clareza total.
         </p>
       </div>
 
-      <div className="perspective-2000 w-full max-w-[1000px] flex justify-center mt-20 px-10">
+      <div className="perspective-2000 w-full max-w-[900px] flex justify-center mt-10 px-10">
         <div className="relative w-full aspect-[16/10]">
-          <div className="absolute bottom-0 left-0 right-0 h-[3%] bg-[#1a1a1a] rounded-b-xl border-t border-white/10 shadow-2xl z-20" />
+          {/* Base */}
+          <div className="absolute bottom-[-2%] left-[-2%] right-[-2%] h-[6%] bg-[#1a1a1a] rounded-b-2xl border-t border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20" />
           
+          {/* Lid */}
           <div 
             ref={lidRef}
             className="absolute inset-0 bg-[#0a0a0a] rounded-t-xl border border-white/10 origin-bottom shadow-2xl z-10"
             style={{ 
-              transform: 'rotateX(0deg)', 
+              transform: 'rotateX(90deg)', 
               transformStyle: 'preserve-3d',
               backfaceVisibility: 'hidden',
               willChange: 'transform'

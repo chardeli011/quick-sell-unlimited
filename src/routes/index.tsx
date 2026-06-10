@@ -363,7 +363,7 @@ function Awards() {
   ];
   const loop = [...awards, ...awards];
   return (
-    <section className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
+    <section id="premios" className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center mb-14">
         <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
           Reconhecimento de quem <span className="text-yellow" data-no-typewriter>entende</span> do mercado

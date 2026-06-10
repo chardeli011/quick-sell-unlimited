@@ -958,7 +958,8 @@ function LaptopDashboard() {
             style={{ 
               transform: 'rotateX(0deg)', 
               transformStyle: 'preserve-3d',
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: 'hidden',
+              willChange: 'transform'
             }}
           >
             <div className="absolute inset-[2%] bg-black rounded-lg overflow-hidden border border-white/5 flex items-center justify-center">

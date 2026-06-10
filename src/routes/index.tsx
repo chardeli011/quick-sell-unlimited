@@ -1173,6 +1173,25 @@ function QuikLanding() {
   const ref = useReveal();
   return (
     <div ref={ref} className="min-h-screen bg-black text-white relative">
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Quik",
+          "operatingSystem": "Web",
+          "applicationCategory": "FinanceApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "12000"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          }
+        })}
+      </script>
       {/* Dynamic Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="light-glow top-[-10%] left-[-10%] w-[40%] h-[40%]" />

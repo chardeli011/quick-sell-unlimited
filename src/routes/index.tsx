@@ -187,10 +187,15 @@ function Nav() {
           <a href="#precos" className="hover:text-yellow hover:-translate-y-1 transition-all">Preços</a>
           <a href="#faq" className="hover:text-yellow hover:-translate-y-1 transition-all">FAQ</a>
         </nav>
-        <a href="#cta" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
-          <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
-          <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
-        </a>
+        <div className="flex items-center gap-4">
+          <a href="https://app.quikbr.com" target="_blank" rel="noopener noreferrer" className="hidden md:block text-sm font-semibold text-white/70 hover:text-white transition-colors">
+            Entrar
+          </a>
+          <a href="https://app.quikbr.com/auth/register" target="_blank" rel="noopener noreferrer" className="btn-yellow text-sm !py-2.5 !px-5 whitespace-nowrap">
+            <span className="btn-flip-content">Criar conta <ArrowRight className="w-4 h-4" /></span>
+            <span className="btn-flip-hidden">Criar conta <ArrowRight className="w-4 h-4" /></span>
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -237,7 +242,9 @@ function Hero() {
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a 
           data-hero-cta 
-          href="#cta" 
+          href="https://app.quikbr.com/auth/register" 
+          target="_blank"
+          rel="noopener noreferrer"
           className={`btn-yellow w-full sm:w-[320px] justify-center shadow-2xl ${isSpotlight ? 'bg-black text-yellow border-black' : ''}`}
         >
           <span className="btn-flip-content">Criar minha conta grátis <ArrowRight className="w-4 h-4" /></span>
@@ -1066,7 +1073,9 @@ function FinalCTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
               <a 
-                href="#" 
+                href="https://app.quikbr.com/auth/register" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-yellow text-xl !px-12 !py-6 w-full sm:w-auto shadow-[0_0_30px_rgba(254,255,0,0.3)] hover:shadow-[0_0_50px_rgba(254,255,0,0.5)] transition-all duration-500"
                 data-interactive
               >
@@ -1074,7 +1083,9 @@ function FinalCTA() {
                 <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="ml-2 w-6 h-6" /></span>
               </a>
               <a 
-                href="#" 
+                href="https://wa.me/5511999999999" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-all duration-300 font-semibold text-lg flex items-center gap-2 group/link"
                 data-interactive
               >

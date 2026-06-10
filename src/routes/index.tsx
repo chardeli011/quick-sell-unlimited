@@ -411,7 +411,7 @@ function NextSteps() {
     { 
       t: "Dados em tempo real", 
       d: "Analytics profundo para você tomar decisões baseadas em números, não em achismos.",
-      img: "https://images.unsplash.com/photo-1551288049-bbda46304743?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
     },
   ];
 
@@ -433,7 +433,7 @@ function NextSteps() {
                 <img 
                   src={step.img} 
                   alt={step.t}
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-all duration-700 ease-out bg-[#1A1A1A]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               </div>

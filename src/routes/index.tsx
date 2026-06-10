@@ -452,8 +452,16 @@ function NextSteps() {
             </div>
           ))}
         </div>
+
+        <div className="mt-20 flex justify-center" data-reveal>
+          <a href="#cta" className="btn-yellow text-xl !px-12 !py-6 group">
+            <span className="btn-flip-content">Criar minha conta agora <ArrowRight className="inline-block ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" /></span>
+            <span className="btn-flip-hidden">Criar minha conta agora <ArrowRight className="inline-block ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" /></span>
+          </a>
+        </div>
       </div>
     </section>
+
   );
 }
 

@@ -1158,8 +1158,8 @@ function QuikLanding() {
         <NextSteps />
         <HowItWorks />
         <GatewayAwards />
-        <Pricing />
         <RealTimeNotifications />
+        <Pricing />
         <Security />
         <FAQ />
         <FinalCTA />

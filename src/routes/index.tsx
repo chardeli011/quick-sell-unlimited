@@ -17,6 +17,10 @@ import {
   Bell,
   DollarSign,
   Lock,
+  Globe,
+  BarChart3,
+  Layers,
+  MousePointer2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -399,59 +403,65 @@ function NextSteps() {
     { 
       t: "Infraestrutura escalável", 
       d: "Tecnologia de ponta pronta para suportar picos de tráfego extremos em lançamentos.",
-      img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
+      icon: Globe
     },
     { 
       t: "Conversão otimizada", 
       d: "Checkouts testados e validados para garantir a menor fricção e a maior conversão.",
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+      icon: MousePointer2
     },
     { 
       t: "Ecossistema completo", 
       d: "Todas as ferramentas que você precisa em um só lugar, integradas e prontas para usar.",
-      img: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop"
+      icon: Layers
     },
     { 
       t: "Dados em tempo real", 
       d: "Analytics profundo para você tomar decisões baseadas em números, não em achismos.",
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+      icon: BarChart3
     },
   ];
 
   return (
-    <section className="py-32 overflow-hidden">
+    <section className="py-32 overflow-hidden bg-black/20">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="font-display text-4xl md:text-6xl font-bold max-w-4xl mb-20" data-reveal>
           Seu próximo passo no digital acontece aqui. <span className="text-yellow" data-no-typewriter>E o próximo. E o próximo…</span>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
             <div 
               key={i} 
               data-reveal
-              className="group relative h-[450px] rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-out hover:flex-[1.5] flex-1 bg-[color:var(--surface)] border border-white/10"
+              data-interactive
+              className="group relative h-[420px] rounded-[32px] overflow-hidden bg-white/[0.03] border border-white/10 p-10 flex flex-col justify-between hover:bg-white/[0.05] hover:border-yellow/30 transition-all duration-500"
             >
-              <div className="absolute inset-0 z-0">
-                <img 
-                  src={step.img} 
-                  alt={step.t}
-                  className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-all duration-700 ease-out bg-[#1A1A1A]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              <div className="absolute top-0 right-0 p-10 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500">
+                <step.icon className="w-40 h-40 -mr-16 -mt-16 rotate-12" />
               </div>
-              
-              <div className="relative z-10 h-full p-8 flex flex-col justify-end">
-                <div className="mb-4 w-10 h-10 rounded-full bg-yellow text-black flex items-center justify-center font-bold text-sm">
-                  0{i + 1}
+
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-yellow/10 border border-yellow/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-yellow group-hover:border-yellow transition-all duration-500">
+                  <step.icon className="w-8 h-8 text-yellow group-hover:text-black transition-colors duration-500" />
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-3 group-hover:text-yellow transition-colors duration-300">
+                <div className="text-xs font-mono text-yellow/50 tracking-widest uppercase mb-4">Módulo 0{i + 1}</div>
+                <h3 className="font-display text-2xl font-bold mb-4 group-hover:text-yellow transition-colors duration-300">
                   {step.t}
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+              </div>
+              
+              <div className="relative z-10">
+                <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                   {step.d}
                 </p>
+                <div className="mt-6 flex items-center gap-2 text-yellow text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0">
+                  Saber mais <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
+
+              {/* Decorative gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
           ))}
         </div>
@@ -464,7 +474,6 @@ function NextSteps() {
         </div>
       </div>
     </section>
-
   );
 }
 

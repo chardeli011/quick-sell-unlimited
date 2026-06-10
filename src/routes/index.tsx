@@ -486,8 +486,8 @@ function HowItWorks() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => `+=${totalWidth}`,
-          scrub: 0.5,
+          end: () => `+=${totalWidth + window.innerWidth / 2}`,
+          scrub: 1,
           pin: true,
           invalidateOnRefresh: true,
           onUpdate: (self) => {

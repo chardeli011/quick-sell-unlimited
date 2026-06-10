@@ -933,7 +933,7 @@ function LaptopDashboard() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-40 relative min-h-[150vh] flex flex-col items-center justify-start bg-black overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center bg-black overflow-hidden py-32">
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       <div className="light-bloom absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />
       <div className="light-bloom absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow/10 rounded-full blur-[120px] opacity-0" />

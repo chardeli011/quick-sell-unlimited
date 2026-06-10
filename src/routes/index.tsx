@@ -646,8 +646,8 @@ function GatewayAwards() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 20%",
-          end: `+=${totalSteps * 80}%`,
+          start: "top top",
+          end: `+=${totalSteps * 100}%`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -692,42 +692,40 @@ function GatewayAwards() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Header - Fixed during the section scroll */}
-      <div className="relative z-20 text-center mb-12 pointer-events-none">
-        <span className="chip mb-4 inline-block" data-reveal>Reconhecimento</span>
-        <h2 className="awards-title font-display text-4xl md:text-6xl font-bold text-white">
+      <div className="relative z-20 text-center mb-6 pointer-events-none">
+        <span className="chip mb-2 inline-block" data-reveal>Reconhecimento</span>
+        <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
           Premiações Exclusivas
         </h2>
-        <p className="mt-4 text-white/50 max-w-xl mx-auto text-sm md:text-base px-6">
+        <p className="mt-2 text-white/50 max-w-xl mx-auto text-xs md:text-sm px-6">
           A excelência tecnológica e o compromisso com resultados nos tornaram a plataforma mais premiada do mercado digital brasileiro.
         </p>
       </div>
 
       {/* Awards Showcase Area */}
-      <div className="relative w-full max-w-4xl aspect-video md:aspect-square flex items-center justify-center perspective-2000">
+      <div className="relative w-full max-w-4xl flex-1 flex items-center justify-center perspective-2000">
         {awards.map((award, i) => (
           <div
             key={i}
             ref={(el) => {
               if (el) itemsRef.current[i] = el;
             }}
-            className="absolute inset-0 flex flex-col items-center justify-center p-8"
+            className="absolute inset-0 flex flex-col items-center justify-center p-4"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative group">
+            <div className="relative group flex items-center justify-center w-full h-full">
               {/* Outer Glow */}
-              <div className="absolute inset-0 bg-yellow/20 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-yellow/10 blur-3xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700" />
               
               {/* Image Container */}
-              <div className="relative w-64 h-64 md:w-[500px] md:h-[500px] flex items-center justify-center">
+              <div className="relative w-full h-full max-h-[60vh] flex items-center justify-center">
                 <img 
                   src={award.img} 
                   alt={award.title}
-                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(254,255,0,0.3)]"
+                  className="max-w-full max-h-full object-contain drop-shadow-[0_0_30px_rgba(254,255,0,0.2)]"
                 />
               </div>
             </div>
-
-            {/* Award Info removed as requested */}
           </div>
         ))}
       </div>

@@ -25,16 +25,21 @@ import {
 
 export const Route = createFileRoute("/")({
   component: QuikLanding,
-  head: () => ({
-    meta: [
-      { title: "Quik — Venda mais. Receba na hora. Escale sem limite." },
-      {
-        name: "description",
-        content:
-          "A Quik é a plataforma de pagamentos para infoprodutos. Aprovação máxima, Pix instantâneo e checkout que converte.",
-      },
-    ],
-  }),
+    head: () => ({
+      meta: [
+        { title: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        {
+          name: "description",
+          content:
+            "Aumente suas vendas com a Quik. O melhor gateway de pagamento e checkout para infoprodutos com Pix instantâneo, aprovação máxima e segurança total.",
+        },
+        { name: "keywords", content: "gateway de pagamento, checkout infoprodutos, vender infoprodutos, plataforma de afiliados, pagamentos online, quik pagamentos" },
+        { property: "og:title", content: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        { property: "og:description", content: "Plataforma de pagamentos de alta performance para infoprodutores e negócios digitais." },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+    }),
 });
 
 const isServer = typeof window === "undefined";

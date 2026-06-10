@@ -294,7 +294,7 @@ function Stats() {
     { v: "5", l: "pra começar a vender", prefix: "", suffix: " min" },
   ];
   return (
-    <section className="border-y border-white/10 bg-[color:var(--surface)]">
+    <section className="bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8" data-stagger>
         {stats.map((s) => (
           <div key={s.l} data-interactive className="text-center md:text-left group hover:-translate-y-2 transition-transform duration-500">
@@ -372,7 +372,7 @@ function Awards() {
   ];
   const loop = [...awards, ...awards];
   return (
-    <section id="premios" className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
+    <section id="premios" className="py-32 bg-[color:var(--surface)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center mb-14">
         <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
           Reconhecimento de quem <span className="text-yellow" data-no-typewriter>entende</span> do mercado
@@ -937,7 +937,7 @@ function Security() {
     "Backup automático de dados",
   ];
   return (
-    <section className="py-32 bg-[color:var(--surface)] border-y border-white/10">
+    <section className="py-32 bg-[color:var(--surface)]">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <span className="chip mb-6" data-reveal>Autoridade</span>
@@ -1109,7 +1109,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/10 bg-black pt-24 pb-12">
+    <footer className="bg-black pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">

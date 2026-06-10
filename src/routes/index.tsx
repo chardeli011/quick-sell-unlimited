@@ -937,19 +937,56 @@ function FinalCTA() {
 }
 
 function Footer() {
+  const links = [
+    { label: "Início", href: "#" },
+    { label: "Por que a Quik", href: "#por-que" },
+    { label: "Prêmios", href: "#premios" },
+    { label: "Como funciona", href: "#como" },
+    { label: "Preços", href: "#precos" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
   return (
-    <footer className="border-t border-white/10 bg-black py-12">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="font-display text-2xl font-bold hover:scale-110 transition-transform cursor-pointer">
-          <img src="/logoquik.svg" alt="Quik Logo" className="h-8 w-auto" />
+    <footer className="border-t border-white/10 bg-black pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="col-span-1 md:col-span-2">
+            <a href="#" className="inline-block mb-6 hover:scale-105 transition-transform duration-300">
+              <img src="/logoquik.svg" alt="Quik Logo" className="h-8 w-auto" />
+            </a>
+            <p className="text-white/40 max-w-sm text-sm leading-relaxed">
+              A Quik é a plataforma de pagamentos feita para quem leva o digital a sério. 
+              Simples, rápida e segura do primeiro produto ao primeiro milhão.
+            </p>
+          </div>
+          
+          <div className="lg:col-start-4">
+            <h4 className="font-display text-white font-bold mb-6 text-sm uppercase tracking-wider">Links Úteis</h4>
+            <div className="grid grid-cols-2 gap-y-3 gap-x-8">
+              {links.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href} 
+                  className="text-white/50 hover:text-yellow text-sm transition-all duration-300 flex items-center group"
+                >
+                  <span className="w-0 group-hover:w-2 h-px bg-yellow mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="text-sm text-white/40">
-          © 2026 Quik. A plataforma de pagamentos para quem leva o digital a sério.
-        </div>
-        <div className="flex gap-6 text-sm text-white/50">
-          <a href="#" className="hover:text-yellow">Termos</a>
-          <a href="#" className="hover:text-yellow">Privacidade</a>
-          <a href="#" className="hover:text-yellow">Contato</a>
+
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-xs text-white/20">
+            © 2026 Quik. Todos os direitos reservados.
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] text-white/40 font-medium uppercase tracking-widest">Sistemas operantes</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -366,7 +366,7 @@ function Awards() {
     <section className="py-32 border-y border-white/10 bg-[color:var(--surface)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center mb-14">
         <h2 className="font-display text-4xl md:text-5xl font-bold" data-reveal>
-          Reconhecimento de quem <span className="text-yellow">entende</span> do mercado
+          Reconhecimento de quem <span className="text-yellow" data-no-typewriter>entende</span> do mercado
         </h2>
         <p className="mt-4 text-white/60 max-w-2xl mx-auto" data-reveal>
           A Quik não é só mais uma plataforma é a escolha de quem já chegou lá.

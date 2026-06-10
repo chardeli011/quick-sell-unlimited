@@ -1073,7 +1073,9 @@ function FinalCTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6" data-reveal>
               <a 
-                href="#" 
+                href="https://app.quikbr.com/auth/register" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-yellow text-xl !px-12 !py-6 w-full sm:w-auto shadow-[0_0_30px_rgba(254,255,0,0.3)] hover:shadow-[0_0_50px_rgba(254,255,0,0.5)] transition-all duration-500"
                 data-interactive
               >
@@ -1081,7 +1083,9 @@ function FinalCTA() {
                 <span className="btn-flip-hidden">Criar conta agora <ArrowRight className="ml-2 w-6 h-6" /></span>
               </a>
               <a 
-                href="#" 
+                href="https://wa.me/5511999999999" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-white transition-all duration-300 font-semibold text-lg flex items-center gap-2 group/link"
                 data-interactive
               >

@@ -570,7 +570,7 @@ function HowItWorks() {
         <div className="w-[40vw] shrink-0">
           <span className="chip mb-6">Como funciona</span>
           <h2 className="font-display text-4xl md:text-7xl font-bold">
-            Em <span className="text-yellow">3 passos</span>,<br />você já está vendendo.
+            Em <span className="text-yellow" data-no-typewriter>3 passos</span>,<br />você já está vendendo.
           </h2>
         </div>
         {steps.map((s, i) => (

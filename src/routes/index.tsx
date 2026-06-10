@@ -1172,7 +1172,7 @@ function QuikLanding() {
         <NextSteps />
         <HowItWorks />
         <GatewayAwards />
-        <LaptopDashboard />
+        
         <RealTimeNotifications />
         <Pricing />
         <Security />

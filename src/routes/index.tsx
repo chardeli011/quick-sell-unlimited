@@ -27,14 +27,14 @@ export const Route = createFileRoute("/")({
   component: QuikLanding,
     head: () => ({
       meta: [
-        { title: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        { title: "Quik - Checkout e Gateway de Pagamento para Infoprodutos" },
         {
           name: "description",
           content:
             "Aumente suas vendas com a Quik. O melhor gateway de pagamento e checkout para infoprodutos com Pix instantâneo, aprovação máxima e segurança total.",
         },
         { name: "keywords", content: "gateway de pagamento, checkout infoprodutos, vender infoprodutos, plataforma de afiliados, pagamentos online, quik pagamentos" },
-        { property: "og:title", content: "Quik — Checkout e Gateway de Pagamento para Infoprodutos" },
+        { property: "og:title", content: "Quik - Checkout e Gateway de Pagamento para Infoprodutos" },
         { property: "og:description", content: "Plataforma de pagamentos de alta performance para infoprodutores e negócios digitais." },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -369,12 +369,12 @@ function WhyQuik() {
 
 function Awards() {
   const awards = [
-    "🥇 Plataforma Revelação 2024 — InfoCommerce Awards",
-    "🏆 Melhor Gateway para Infoprodutos — Summit Digital Brasil",
-    "⭐ Top 10 Plataformas de Pagamento — Ranking Mercado Digital",
-    "🚀 Startup de Alto Impacto — Aceleração Tech BR",
-    "💎 Melhor Experiência de Checkout — Prêmio UX Finance 2024",
-    "🔥 Plataforma Mais Bem Avaliada — Comunidade Lançadores BR",
+    "🥇 Plataforma Revelação 2024 - InfoCommerce Awards",
+    "🏆 Melhor Gateway para Infoprodutos - Summit Digital Brasil",
+    "⭐ Top 10 Plataformas de Pagamento - Ranking Mercado Digital",
+    "🚀 Startup de Alto Impacto - Aceleração Tech BR",
+    "💎 Melhor Experiência de Checkout - Prêmio UX Finance 2024",
+    "🔥 Plataforma Mais Bem Avaliada - Comunidade Lançadores BR",
   ];
   const loop = [...awards, ...awards];
   return (
@@ -711,7 +711,7 @@ function GatewayAwards() {
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Header — Fixed during the section scroll */}
+      {/* Header - Fixed during the section scroll */}
       <div className="relative z-20 text-center mb-6 pointer-events-none">
         <span className="chip mb-2 inline-block" data-reveal>Reconhecimento & Conquistas</span>
         <h2 className="awards-title font-display text-3xl md:text-5xl font-bold text-white">
@@ -987,7 +987,7 @@ function FAQ() {
     { q: "É grátis pra começar?", a: "Sim. Você cria sua conta, configura seus produtos e só paga uma taxa sobre o que vender. Sem mensalidade, sem pegadinha." },
     { q: "Quanto tempo leva pra receber?", a: "Vendas via Pix caem na sua conta em segundos. Cartão de crédito segue o ciclo padrão da operadora, com as melhores condições do mercado." },
     { q: "Preciso ter CNPJ?", a: "Não. Você pode começar com CPF mesmo. Quando seu negócio crescer, a migração é simples." },
-    { q: "A Quik funciona para infoprodutos e produtos físicos?", a: "Sim. Cursos, mentorias, e-books, assinaturas, produtos físicos — a Quik suporta todos os formatos." },
+    { q: "A Quik funciona para infoprodutos e produtos físicos?", a: "Sim. Cursos, mentorias, e-books, assinaturas, produtos físicos - a Quik suporta todos os formatos." },
     { q: "Tem suporte se eu tiver problema?", a: "Sim, e é suporte humano. Nosso time está disponível para resolver, não só para responder com mensagem automática." },
   ];
   const [open, setOpen] = useState<number | null>(0);

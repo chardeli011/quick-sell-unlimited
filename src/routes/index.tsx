@@ -888,7 +888,7 @@ function FinalCTA() {
             </div>
             
             <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]" data-reveal>
-              Pronto para <span className="text-yellow">começar?</span>
+              Pronto para <span className="text-yellow" data-no-typewriter>começar?</span>
             </h2>
             
             <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 font-medium leading-relaxed" data-reveal>

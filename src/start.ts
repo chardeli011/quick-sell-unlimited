@@ -3,5 +3,6 @@ import { getRouter } from "./router";
 
 const router = getRouter();
 
-hydrateStart();
-console.log("Hydration complete");
+export const startInstance = hydrateStart({
+  router,
+});

@@ -3,6 +3,4 @@ import { getRouter } from "./router";
 
 const router = getRouter();
 
-export const startInstance = hydrateStart({
-  router,
-});
+export const startInstance = hydrateStart();

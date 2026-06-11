@@ -1,6 +1,6 @@
-import { hydrateStart } from "@tanstack/react-start";
+import { hydrateStart } from "@tanstack/react-start-client";
 import { getRouter } from "./router";
 
 const router = getRouter();
 
-hydrateStart(router);
+hydrateStart();

@@ -1,7 +1,8 @@
 {
   "version": 2,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/_sub/(.*)", "dest": "/.output/public/_sub/$1" },
+    { "src": "/assets/(.*)", "dest": "/.output/public/assets/$1" },
+    { "src": "/(.*)", "dest": "/.output/public/index.html" }
   ]
 }

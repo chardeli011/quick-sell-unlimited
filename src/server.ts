@@ -6,14 +6,12 @@ import { renderErrorPage } from "./lib/error-page";
 
 const handler = createStartHandler({
   handler: defaultRenderHandler,
-})({
-  getRouter,
-} as any);
+});
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      const response = await handler(request, env as any);
+      const response = await handler(request, { getRouter } as any);
       if (response.status >= 500) {
         const body = await response.clone().text();
         if (body.includes("unhandled") || body.includes("Internal Server Error")) {

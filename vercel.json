@@ -1,29 +1,7 @@
 {
   "version": 2,
   "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/client/assets/$1"
-    },
-    {
-      "src": "/awards/(.*)",
-      "dest": "/client/awards/$1"
-    },
-    {
-      "src": "/favicon.png",
-      "dest": "/client/favicon.png"
-    },
-    {
-      "src": "/formula1.mp4",
-      "dest": "/client/formula1.mp4"
-    },
-    {
-      "src": "/logoquik.svg",
-      "dest": "/client/logoquik.svg"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/index.html"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

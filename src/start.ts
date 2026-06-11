@@ -4,3 +4,4 @@ import { getRouter } from "./router";
 const router = getRouter();
 
 hydrateStart();
+console.log("Hydration complete");

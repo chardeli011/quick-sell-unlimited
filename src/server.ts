@@ -4,5 +4,5 @@ import { getRouter } from "./router";
 export default createStartHandler({
   handler: defaultRenderHandler,
 })({
-  getRouter,
+  createRouter: getRouter,
 });

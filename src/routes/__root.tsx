@@ -118,6 +118,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  console.log("[Debug] Rendering RootComponent");
   const { queryClient } = Route.useRouteContext();
 
   return (

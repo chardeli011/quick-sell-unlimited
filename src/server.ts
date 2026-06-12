@@ -10,12 +10,15 @@ const handler = createStartHandler({
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    console.log(`[Debug] Server request: ${request.method} ${request.url}`);
     try {
       const response = await handler(request, { getRouter } as any);
+      console.log(`[Debug] Server response status: ${response.status}`);
       if (response.status >= 500) {
         const body = await response.clone().text();
         if (body.includes("unhandled") || body.includes("Internal Server Error")) {
-          console.error(consumeLastCapturedError() ?? new Error(`Server error: ${body}`));
+          const lastError = consumeLastCapturedError();
+          console.error("[Debug] Server internal error detected:", lastError);
           return new Response(renderErrorPage(), {
             status: 500,
             headers: { "Content-Type": "text/html; charset=utf-8" },
@@ -24,7 +27,7 @@ export default {
       }
       return response;
     } catch (error) {
-      console.error(error);
+      console.error("[Debug] Server catch error:", error);
       return new Response(renderErrorPage(), {
         status: 500,
         headers: { "Content-Type": "text/html; charset=utf-8" },

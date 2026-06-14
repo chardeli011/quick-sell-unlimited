@@ -1,10 +1,5 @@
-console.log("[Debug] Executing src/start.ts");
-import { hydrateStart } from "@tanstack/react-start-client";
-import { getRouter } from "./router";
+import { createStart } from "@tanstack/react-start";
 
-console.log("[Debug] Initializing router in src/start.ts");
-const router = getRouter();
+console.log("[Debug] Loading TanStack Start config");
 
-console.log("[Debug] Calling hydrateStart()");
-export const startInstance = hydrateStart();
-console.log("[Debug] hydrateStart() completed");
+export const startInstance = createStart(() => ({}));

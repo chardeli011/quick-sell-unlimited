@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "cloudflare:compat": "mkdir -p dist/server && cp .output/server/wrangler.json dist/server/wrangler.json",
+    "cloudflare:compat": "rm -rf dist && mkdir -p dist && cp -R .output/server dist/server && cp -R .output/public dist/public",
     "deploy": "bun run build && wrangler deploy --config .output/server/wrangler.json"
   },
   "dependencies": {

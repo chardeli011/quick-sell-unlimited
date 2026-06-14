@@ -12,7 +12,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "cloudflare:compat": "rm -rf dist && mkdir -p dist && cp -R .output/server dist/server && cp -R .output/public dist/public",
-    "deploy": "bun run build && wrangler deploy --config .output/server/wrangler.json"
+    "deploy": "bun run build && wrangler deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

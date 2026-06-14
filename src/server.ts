@@ -1,57 +1,80 @@
 import "./lib/error-capture";
+
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 
 type ServerEntry = {
-  fetch: (request: Request, env?: unknown, ctx?: unknown) => Promise<Response> | Response;
+  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
 async function getServerEntry(): Promise<ServerEntry> {
-  serverEntryPromise ??= import("@tanstack/react-start/server-entry").then(
-    (mod) => (mod.default ?? mod) as ServerEntry,
-  );
-
+  if (!serverEntryPromise) {
+    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
+      (m) => ((m as { default?: ServerEntry }).default ?? (m as unknown as ServerEntry)),
+    );
+  }
   return serverEntryPromise;
 }
 
-async function normalizeSsrResponse(response: Response): Promise<Response> {
-  if (response.status < 500) return response;
-
-  const contentType = response.headers.get("content-type") ?? "";
-  const body = await response.clone().text();
-  const isMaskedSsrError =
-    body.includes('"unhandled":true') ||
-    body.includes('"message":"HTTPError"') ||
-    body.includes("Internal Server Error");
-
-  if (!contentType.includes("application/json") && !isMaskedSsrError) {
-    return response;
-  }
-
-  console.error("[Debug] SSR 500 response:", consumeLastCapturedError() ?? body);
-
+function brandedErrorResponse(): Response {
   return new Response(renderErrorPage(), {
     status: 500,
     headers: { "content-type": "text/html; charset=utf-8" },
   });
 }
 
+function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boolean {
+  let payload: unknown;
+  try {
+    payload = JSON.parse(body);
+  } catch {
+    return false;
+  }
+
+  if (!payload || Array.isArray(payload) || typeof payload !== "object") {
+    return false;
+  }
+
+  const fields = payload as Record<string, unknown>;
+  const expectedKeys = new Set(["message", "status", "unhandled"]);
+  if (!Object.keys(fields).every((key) => expectedKeys.has(key))) {
+    return false;
+  }
+
+  return (
+    fields.unhandled === true &&
+    fields.message === "HTTPError" &&
+    (fields.status === undefined || fields.status === responseStatus)
+  );
+}
+
+// h3 swallows in-handler throws into a normal 500 Response with body
+// {"unhandled":true,"message":"HTTPError"} — try/catch alone never fires for those.
+async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
+  if (response.status < 500) return response;
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) return response;
+
+  const body = await response.clone().text();
+  if (!isCatastrophicSsrErrorBody(body, response.status)) {
+    return response;
+  }
+
+  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
+  return brandedErrorResponse();
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
-    console.log(`[Debug] Server request: ${request.method} ${request.url}`);
     try {
-      const entry = await getServerEntry();
-      const response = await entry.fetch(request, env, ctx);
-      console.log(`[Debug] Server response status: ${response.status}`);
-      return await normalizeSsrResponse(response);
+      const handler = await getServerEntry();
+      const response = await handler.fetch(request, env, ctx);
+      return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
-      console.error("[Debug] Server catch error:", error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      console.error(error);
+      return brandedErrorResponse();
     }
   },
 };

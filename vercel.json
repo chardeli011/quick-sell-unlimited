@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/client/assets/$1" },
-    { "source": "/awards/(.*)", "destination": "/client/awards/$1" },
-    { "source": "/favicon.png", "destination": "/client/favicon.png" },
-    { "source": "/formula1.mp4", "destination": "/client/formula1.mp4" },
-    { "source": "/logoquik.svg", "destination": "/client/logoquik.svg" },
-    { "source": "/(.*)", "destination": "/server/index.mjs" }
+  "routes": [
+    { "src": "/_sub/(.*)", "dest": "/.output/public/_sub/$1" },
+    { "src": "/assets/(.*)", "dest": "/.output/public/assets/$1" },
+    { "src": "/(.*)", "dest": "/.output/public/index.html" }
   ]
 }

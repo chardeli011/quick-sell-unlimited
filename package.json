@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "cloudflare:compat": "rm -rf dist && mkdir -p dist && cp -R .output/server dist/server && cp -R .output/public dist/public",
+    "cloudflare:compat": "if [ -d .output/server ]; then mkdir -p dist && rm -rf dist/server dist/public && cp -R .output/server dist/server && cp -R .output/public dist/public; elif [ -f dist/server/wrangler.json ]; then echo 'Cloudflare output already exists in dist/server'; else echo 'Missing Cloudflare wrangler output' >&2; exit 1; fi",
     "deploy": "bun run build && wrangler deploy --config dist/server/wrangler.json"
   },
   "dependencies": {

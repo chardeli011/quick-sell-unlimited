@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && bun run cloudflare:compat",
     "build:vercel": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "deploy": "vite build && wrangler deploy --config dist/server/wrangler.json"
+    "cloudflare:compat": "if [ -d .output/server ]; then mkdir -p dist && rm -rf dist/server dist/public && cp -R .output/server dist/server && cp -R .output/public dist/public; elif [ -f dist/server/wrangler.json ]; then echo 'Cloudflare output already exists in dist/server'; else echo 'Missing Cloudflare wrangler output' >&2; exit 1; fi",
+    "deploy": "bun run build && wrangler deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
